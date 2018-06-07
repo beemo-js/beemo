@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "outFile": "main.js",
+        "module": "amd",
+        "baseUrl": ".",
+        "paths": {
+          "reflect-metadata": ["node_modules/reflect-metadata/Reflect.js"]
+        }
+    }
+}

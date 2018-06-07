@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "lib": ["es6", "dom", "scripthost"],
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "alwaysStrict": true,
+    },
+
+    "files": [
+      "src/annotations/tests.ts",
+      "src/cache/tests.ts",
+      "src/config/tests.ts",
+      "src/conversion/tests.ts",
+      "src/di/tests.ts",
+      "src/events/tests.ts",
+      "src/http/tests.ts",
+      "src/logging/tests.ts",
+      "src/metadata/tests.ts",
+      "src/tools/monads/tests.ts",
+      "src/tools/tests.ts",
+      "src/serialization/tests.ts",
+      "src/threads/tests.ts",
+      "src/types/tests.ts",
+      "src/validation/tests.ts"
+    ]
+}
