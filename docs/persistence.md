@@ -20,9 +20,7 @@ class User implements Entity<number> {
 }
 
 class UserStore extends KVEntityStore<User, number> {
-    constructor(
-        kvStore: KVStore
-    ) {
+    constructor(kvStore: KVStore) {
         super(kvStore, 'User')
     }
 }

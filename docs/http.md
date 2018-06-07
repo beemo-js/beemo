@@ -70,7 +70,7 @@ class UserClient extends CallFactory<User> {
 
     @HandledCall()
     getFromId(id: number): Call<User> {
-        return this.get(\`/${id}\`)
+        return this.get(`/${id}`)
     }
 
     @HandledCall()

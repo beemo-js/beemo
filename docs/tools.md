@@ -1,7 +1,3 @@
-import {Optional} from "../src/tools/monads/Optional"
-import {Attempt} from "../src/tools/monads/Attempt"
-import {Pipe} from "../src/tools/monads/Pipe"
-
 # Tools
 
 ## Annotations
@@ -67,7 +63,7 @@ A nice way to handle exceptions.
 ```ts
 Attempt.of<string>(() => doSomethingRisky())
     .map(val => val.toUpperCase())
-    .getOrDefault('not ok')
+    .getOrDefault('default value')
 ```
 
 ### Pipe
