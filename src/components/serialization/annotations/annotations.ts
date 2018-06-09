@@ -32,9 +32,9 @@ export function MappedField(config?: string|MappedFieldConfiguration): PropertyD
         if (typeof config === 'string') {
             config = {
                 [Normalizer.defaultGroup]: {
-                    mappedField: config as string
+                    name: config
                 }
-            } as MappedFieldConfiguration
+            }
         }
         if (!config[Normalizer.defaultGroup] || !config[Normalizer.defaultGroup].name) {
             for (let group in config) {

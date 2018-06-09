@@ -37,7 +37,13 @@ import {ReflectionClassTypesStore} from '../components/types/ReflectionClassType
 import {ClassTypesStore} from '../components/types/ClassTypesStore'
 import {Validator} from '../components/validation/Validator'
 
-export function initContainer() {
+let containerInitialized = false
+
+export function initContainer(): boolean {
+
+    if (containerInitialized) {
+        return false
+    }
 
     // Annotations
 
@@ -142,4 +148,8 @@ export function initContainer() {
     // Validation
 
     container.set(ValidationServiceName.Validator, () => new Validator(container.get(AnnotationsServiceName.ClassAnnotationsStore)))
+
+    containerInitialized = true
+
+    return true
 }

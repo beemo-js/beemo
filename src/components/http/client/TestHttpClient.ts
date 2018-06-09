@@ -4,7 +4,6 @@ import {Request} from '../abstractions/Request'
 
 export class TestHttpClient implements HttpClient {
     async sendRequest(request: Request): Promise<Response> {
-        console.log('Sending request: ', request)
         return await new Response(200, JSON.stringify({
             url: request.getFinalUrl(),
             body: request.body
