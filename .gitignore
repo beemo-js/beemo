@@ -1,6 +1,7 @@
-.DS_STORE
+**/.DS_STORE
 .idea/
 node_modules/
 package-lock.json
-main.js
+/main.js
 src/**/*.js
+docs/*.md.js
