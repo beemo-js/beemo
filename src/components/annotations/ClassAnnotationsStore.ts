@@ -20,7 +20,7 @@ export class ClassAnnotationsStore {
     }
 
     addClassAnnotation(classFn: Function, type: Function, data: Object): void {
-        this.getClassAnnotations(classFn).push({ type, data })
+        this.getClassAnnotations(classFn).unshift({ type, data })
     }
 
     // Constructor annotations
@@ -30,7 +30,7 @@ export class ClassAnnotationsStore {
     }
 
     addConstructorParameterAnnotation(classFn: Function, index: number, type: Function, data: Object): void {
-        this.getConstructorParameterAnnotations(classFn, index).push({ type, data })
+        this.getConstructorParameterAnnotations(classFn, index).unshift({ type, data })
     }
 
     // Properties annotations
@@ -40,7 +40,7 @@ export class ClassAnnotationsStore {
     }
 
     addPropertyAnnotation(classFn: Function, propertyName: string, type: Function, data: Object): void {
-        this.getPropertyAnnotations(classFn, propertyName).push({ type, data })
+        this.getPropertyAnnotations(classFn, propertyName).unshift({ type, data })
     }
 
     // Methods annotations
@@ -50,7 +50,7 @@ export class ClassAnnotationsStore {
     }
 
     addMethodAnnotation(classFn: Function, methodName: string, type: Function, data: Object): void {
-        this.getMethodAnnotations(classFn, methodName).push({ type, data })
+        this.getMethodAnnotations(classFn, methodName).unshift({ type, data })
     }
 
     // Methods parameters annotations
@@ -60,7 +60,7 @@ export class ClassAnnotationsStore {
     }
 
     addMethodParameterAnnotation(classFn: Function, methodName: string, index: number, type: Function, data: Object): void {
-        this.getMethodParameterAnnotations(classFn, methodName, index).push({ type, data })
+        this.getMethodParameterAnnotations(classFn, methodName, index).unshift({ type, data })
     }
 
     private getObjectAnnotations(obj: Object, type: Function = null): AnnotationData[] {

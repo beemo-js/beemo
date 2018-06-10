@@ -23,8 +23,22 @@ import {
     valid
 } from '../builders'
 import {container} from '../../../framework/globalContainer'
-import {TypesServiceName} from '../../../framework/services'
+import {AnnotationsServiceName, TypesServiceName} from '../../../framework/services'
 import {ReflectionClassTypesStore} from '../../types/ReflectionClassTypesStore'
+import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
+
+// Annotation to property or method
+function addAnnotation(target: any, key: string, index: number, data: ValidatorData): void {
+    const classAnnotationsStore = container.get<ClassAnnotationsStore>(AnnotationsServiceName.ClassAnnotationsStore)
+
+    if (index === undefined) {
+        // property
+        classAnnotationsStore.addPropertyAnnotation(target.constructor, key, Constraints, data)
+    } else {
+        // method parameter
+        classAnnotationsStore.addMethodParameterAnnotation(target.constructor, key, index, Constraints, data)
+    }
+}
 
 // Returns a validator annotation
 export const Constraints = (data: ValidatorData) => (target: any, key: string, index?: number) => addAnnotation(target, key, index, data)
