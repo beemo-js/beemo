@@ -3,7 +3,7 @@ import {ValidatorData} from '../types'
 import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
 import {container} from '../../../framework/globalContainer'
 import {Validator} from '../Validator'
-import {Validator as ValidatorAnnotation} from './Validator'
+import {Constraints as ValidatorAnnotation} from './constraints'
 import {AnnotationsServiceName, ValidationServiceName} from '../../../framework/services'
 
 // Validates method parameters

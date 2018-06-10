@@ -78,5 +78,5 @@ export enum TypesServiceName {
 }
 
 export enum ValidationServiceName {
-    Validator = 'validation/Validator'
+    Validator = 'validation/Constraints'
 }

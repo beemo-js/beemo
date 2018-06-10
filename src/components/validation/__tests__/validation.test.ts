@@ -2,12 +2,11 @@ import {Validator} from '../Validator'
 import {registerValidators} from '../validators'
 import {NameResolver} from '../../metadata/NameResolver'
 import {container} from '../../../framework/globalContainer'
-import {HigherThan} from '../annotations/HigherThan'
 import {ValidatedParameters} from '../annotations/ValidatedParameters'
-import {Validated} from '../annotations/Validated'
-import {Typed} from '../annotations/Typed'
 import {MetadataServiceName, ValidationServiceName} from '../../../framework/services'
 import {initContainer} from '../../../framework/initContainer'
+import {Min, Typed, Valid} from '../annotations/constraints'
+import {min} from '../builders'
 
 initContainer()
 
@@ -15,18 +14,18 @@ const validator = container.get<Validator>(ValidationServiceName.Validator)
 registerValidators(validator, container.get<NameResolver>(MetadataServiceName.NameResolver))
 
 class User {
-    @HigherThan(4)
+    @Min(4)
     id: number
 }
 
 class TestService {
     @ValidatedParameters()
-    foo(@Typed(Number) @HigherThan(1) nb: number): number {
+    foo(@Typed(Number) @Min(1) nb: number): number {
         return nb * 2
     }
 
     @ValidatedParameters()
-    bar(@Validated(User) user: User): number {
+    bar(@Valid(User) user: User): number {
         return user.id
     }
 }
@@ -34,14 +33,8 @@ class TestService {
 const testService = new TestService()
 
 test('Validator', () => {
-    const validatorValue = {
-        id: 'higher_than',
-        args: {
-            lowerBound: 1
-        }
-    }
-    expect(validator.validate(2, [validatorValue])).toHaveLength(0)
-    expect(validator.validate(0, [validatorValue])).toHaveLength(1)
+    expect(validator.validate(2, [min(1)])).toHaveLength(0)
+    expect(validator.validate(0, [min(1)])).toHaveLength(1)
 })
 
 test('Parameter validation decorator', () => {

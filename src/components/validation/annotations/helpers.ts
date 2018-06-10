@@ -1,7 +1,7 @@
 import {ValidatorData} from '../types'
 import {container} from '../../../framework/globalContainer'
 import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
-import {Validator} from './Validator'
+import {Constraints} from './constraints'
 import {AnnotationsServiceName} from '../../../framework/services'
 
 // Adds a property / method param annotation
@@ -10,9 +10,9 @@ export function addAnnotation(target: any, key: string, index: number, data: Val
 
     if (index === undefined) {
         // property
-        classAnnotationsStore.addPropertyAnnotation(target.constructor, key, Validator, data)
+        classAnnotationsStore.addPropertyAnnotation(target.constructor, key, Constraints, data)
     } else {
         // method parameter
-        classAnnotationsStore.addMethodParameterAnnotation(target.constructor, key, index, Validator, data)
+        classAnnotationsStore.addMethodParameterAnnotation(target.constructor, key, index, Constraints, data)
     }
 }
