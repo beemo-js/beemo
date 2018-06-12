@@ -1,13 +1,13 @@
 {
-  "name": "framework",
-  "version": "1.0.0",
+  "name": "beemo",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "src",
   "scripts": {
     "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Antarès Tupin <antares.tupin@gmail.com>",
+  "license": "Apache 2.0",
   "dependencies": {
     "reflect-metadata": "^0.1.12"
   },
