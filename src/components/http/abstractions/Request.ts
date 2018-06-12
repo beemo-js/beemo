@@ -69,18 +69,23 @@ export class Request {
 
     private static mergeUrls(...urls: string[]): string {
         return urls.reduce((base, url) => {
-            if (!base) {
-                return url
-            }
-            if (!url) {
-                return base
-            }
+            if (!base) return url
+            if (!url) return base
 
             let result = base
-            if (base.substr(-1) !== '/' && url.substr(0, 1) !== '/') {
+
+            // if base does not end with a /, add it
+            if (base.substr(-1) !== '/') {
                 result += '/'
             }
+
+            // if url begins with a /, remove it
+            if (url.substr(0, 1) === '/') {
+                url = url.length ? url.substr(1): ''
+            }
+
             result += url
+
             return result
         })
     }
