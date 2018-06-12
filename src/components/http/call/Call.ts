@@ -6,7 +6,8 @@ export class Call<T> {
     retrieved: boolean
 
     constructor(
-        public classFn: Function
+        public classFn: Function,
+        public responseFormatter: (responseBody: Object) => Object = responseBody => responseBody
     ) {
         this.retrieved = false
     }

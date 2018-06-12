@@ -20,15 +20,17 @@ test('KVEntityStore', async () => {
 
 
     const kvStore = new InMemoryKVStore()
-    const userRepository = new UserStore(kvStore)
+    const userStore = new UserStore(kvStore)
 
     const user = new User()
     user.id = 2
     user.name = 'test-user'
 
-    await userRepository.save(user)
+    await userStore.save(user)
 
-    const foundUser = await userRepository.findById(2)
+    const foundUser = await userStore.findById(2)
     expect(foundUser.id).toBe(2)
     expect(foundUser.name).toBe('test-user')
+
+    expect(await userStore.all()).toContain(user)
 })

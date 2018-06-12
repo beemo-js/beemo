@@ -2,29 +2,56 @@ import {Call} from '../../call/Call'
 import {Request} from '../../abstractions/Request'
 import {RequestParamsType} from '../../types'
 
-export abstract class CallFactory<T> {
+type callOptions = {
+    classFn?: Function,
+    responseBodyFormatter?: (body: Object) => Object
+}
+
+export abstract class CallFactory {
     constructor(
         protected classFn: Function,
-        protected baseRequest: Request
+        protected baseRequest: Request,
+        protected responseBodyFormatter: (body: Object) => Object = body => body
     ) {}
 
-    protected buildRequestCall(request: Request, classFn: Function = this.classFn): Call<T> {
-        return Call.fromRequest(classFn, Request.merge(this.baseRequest, request))
+    protected buildRequestCall<T>(
+        request: Request,
+        {classFn = this.classFn, responseBodyFormatter = this.responseBodyFormatter}: callOptions = {}
+    ): Call<T> {
+        const call = Call.fromRequest<T>(classFn, Request.merge(this.baseRequest, request))
+        call.responseFormatter = this.responseBodyFormatter
+        return call
     }
 
-    protected get(url: string = '', requestOptions: RequestParamsType = {}, classFn: Function = this.classFn): Call<T> {
-        return this.buildRequestCall(new Request(url, { method: 'GET', ...requestOptions }), classFn)
+    protected get<T>(
+        url: string = '',
+        requestOptions: RequestParamsType = {},
+        {classFn = this.classFn, responseBodyFormatter = this.responseBodyFormatter}: callOptions = {}
+    ): Call<T> {
+        return this.buildRequestCall<T>(new Request(url, { method: 'GET', ...requestOptions }), {classFn, responseBodyFormatter})
     }
 
-    protected post(url: string = '', requestOptions: RequestParamsType = {}, classFn: Function = this.classFn): Call<T> {
-        return this.buildRequestCall(new Request(url, { method: 'POST', ...requestOptions }), classFn)
+    protected post<T>(
+        url: string = '',
+        requestOptions: RequestParamsType = {},
+        {classFn = this.classFn, responseBodyFormatter = this.responseBodyFormatter}: callOptions = {}
+    ): Call<T> {
+        return this.buildRequestCall<T>(new Request(url, { method: 'POST', ...requestOptions }), {classFn, responseBodyFormatter})
     }
 
-    protected put(url: string = '', requestOptions: RequestParamsType = {}, classFn: Function = this.classFn): Call<T> {
-        return this.buildRequestCall(new Request(url, { method: 'PUT', ...requestOptions }), classFn)
+    protected put<T>(
+        url: string = '',
+        requestOptions: RequestParamsType = {},
+        {classFn = this.classFn, responseBodyFormatter = this.responseBodyFormatter}: callOptions = {}
+    ): Call<T> {
+        return this.buildRequestCall<T>(new Request(url, { method: 'PUT', ...requestOptions }), {classFn, responseBodyFormatter})
     }
 
-    protected delete(url: string = '', requestOptions: RequestParamsType = {}, classFn: Function = this.classFn): Call<T> {
-        return this.buildRequestCall(new Request(url, { method: 'DELETE', ...requestOptions }), classFn)
+    protected delete<T>(
+        url: string = '',
+        requestOptions: RequestParamsType = {},
+        {classFn = this.classFn, responseBodyFormatter = this.responseBodyFormatter}: callOptions = {}
+    ): Call<T> {
+        return this.buildRequestCall<T>(new Request(url, { method: 'DELETE', ...requestOptions }), {classFn, responseBodyFormatter})
     }
 }

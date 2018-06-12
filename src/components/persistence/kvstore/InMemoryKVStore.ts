@@ -3,6 +3,11 @@ import {KVStore} from './KVStore'
 export class InMemoryKVStore implements KVStore {
     private store = new Map<string, any>()
 
+    all<T>(): Promise<T[]> {
+        const result = Array.from(this.store).map(i => i[1]) as T[];
+        return Promise.all(result)
+    }
+
     async get<T>(key: string): Promise<T> {
         return await this.store.get(key) as T;
     }

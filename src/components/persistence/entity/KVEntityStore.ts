@@ -14,6 +14,10 @@ export abstract class KVEntityStore<E extends Entity<Id>, Id> implements EntityS
         return this.basePath + this.pathSeparator + this.idToStringMapper(id)
     }
 
+    async all(): Promise<E[]> {
+        return await this.kvStore.all<E>()
+    }
+
     async findById(id: Id): Promise<E> {
         return await this.kvStore.get<E>(this.entityPath(id))
     }

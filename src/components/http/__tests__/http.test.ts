@@ -54,7 +54,7 @@ test('Entity Client', () => {
         @MappedField() name: string
     }
 
-    class UserClient extends CallFactory<User> {
+    class UserClient extends CallFactory {
         constructor() {
             super(User, new Request('/users'))
         }
