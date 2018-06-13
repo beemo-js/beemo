@@ -4,7 +4,7 @@ import {KVEntityStore} from "../persistence/entity/KVEntityStore";
 import {Call} from "../http/call/Call";
 import {Request} from "../http/abstractions/Request";
 import {KVStore} from "../persistence/kvstore/KVStore";
-import {UrlParam} from "../http/annotations/call_factory";
+import {HandledCall, UrlParam} from "../http/annotations/call_factory";
 import {Page} from "./Page";
 import {CallHttpClient} from "../http/call/CallHttpClient";
 
@@ -50,6 +50,7 @@ class UserClient extends CallFactory {
         super(User, new Request('/users'))
     }
 
+    @HandledCall()
     getFromId(id: number): Call<User> {
         return this.get(`/${id}`)
     }
@@ -60,6 +61,7 @@ class BookClient extends CallFactory {
         super(User, new Request('/users'))
     }
 
+    @HandledCall()
     getByAuthor(@UrlParam('authorId') authorId: number): Call<Book[]> {
         return this.get(`/byAuthor`)
     }

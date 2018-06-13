@@ -3,7 +3,7 @@ import {applyMiddleware} from '../../annotations/aop'
 import {container} from '../../../framework/globalContainer'
 import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
 import {Converter} from '../Converter'
-import {Converter as ConverterAnnotation} from './converters'
+import {Convert as ConverterAnnotation} from './converters'
 import {AnnotationsServiceName, ConversionServiceName} from '../../../framework/services'
 
 // Converts method parameters

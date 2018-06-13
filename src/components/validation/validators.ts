@@ -3,7 +3,7 @@ import {NameResolver} from '../metadata/NameResolver'
 
 export function registerValidators(
     validator: Validator,
-    nameResolver: NameResolver
+    nameResolver?: NameResolver
 ) {
 
     // Global

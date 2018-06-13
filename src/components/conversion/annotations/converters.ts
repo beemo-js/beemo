@@ -20,40 +20,40 @@ import {
 } from '../builders'
 
 // Returns a converter annotation
-export const Converter = (data: ConverterData) => (target: any, key: string, index?: number) => {
+export const Convert = (data: ConverterData) => (target: any, key: string, index?: number) => {
     const classAnnotationsStore = container.get<ClassAnnotationsStore>(AnnotationsServiceName.ClassAnnotationsStore)
 
     if (index === undefined) {
         // property
-        classAnnotationsStore.addPropertyAnnotation(target.constructor, key, Converter, data)
+        classAnnotationsStore.addPropertyAnnotation(target.constructor, key, Convert, data)
     } else {
         // method parameter
-        classAnnotationsStore.addMethodParameterAnnotation(target.constructor, key, index, Converter, data)
+        classAnnotationsStore.addMethodParameterAnnotation(target.constructor, key, index, Convert, data)
     }
 }
 
 // Global
 
-export const DefaultTo = (value: any) => Converter(defaultTo(value))
+export const DefaultTo = (value: any) => Convert(defaultTo(value))
 
 // Numbers
 
-export const Round = () => Converter(round())
-export const Floor = () => Converter(floor())
-export const Ceil = () => Converter(ceil())
+export const Round = () => Convert(round())
+export const Floor = () => Convert(floor())
+export const Ceil = () => Convert(ceil())
 
 // Strings
 
-export const LowerCase = () => Converter(lowerCase())
-export const UpperCase = () => Converter(upperCase())
-export const Trim = () => Converter(trim())
-export const Replace = (pattern: RegExp|string, replacement: string) => Converter(replace(pattern, replacement))
-export const UrlEncode = () => Converter(encodeUrl())
-export const UrlEncodeComponent = () => Converter(encodeUrlComponent())
-export const UrlDecode = () => Converter(decodeUrl())
-export const UrlDecodeComponent = () => Converter(decodeUrlComponent())
+export const LowerCase = () => Convert(lowerCase())
+export const UpperCase = () => Convert(upperCase())
+export const Trim = () => Convert(trim())
+export const Replace = (pattern: RegExp|string, replacement: string) => Convert(replace(pattern, replacement))
+export const UrlEncode = () => Convert(encodeUrl())
+export const UrlEncodeComponent = () => Convert(encodeUrlComponent())
+export const UrlDecode = () => Convert(decodeUrl())
+export const UrlDecodeComponent = () => Convert(decodeUrlComponent())
 
 // Arrays
 
-export const Sort = (reverse: boolean = false) => Converter(sort(reverse))
-export const Reverse = () => Converter(reverse())
+export const Sort = (reverse: boolean = false) => Convert(sort(reverse))
+export const Reverse = () => Convert(reverse())

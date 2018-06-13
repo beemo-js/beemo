@@ -11,7 +11,7 @@ export enum ConfigServiceName {
 }
 
 export enum ConversionServiceName {
-    Converter = 'conversion/Converter'
+    Converter = 'conversion/Convert'
 }
 
 export enum DiServiceName {
