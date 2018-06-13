@@ -29,6 +29,7 @@ export class BatchRequestsQueue implements RequestsQueue {
             await this.batchHttpClient.sendRequests(requestsToSend, this.batchRequest)
             return true
         } catch (e) {
+            console.log(e)
             // If sync service worker is enabled, let it sync in background
             if (!this.syncServiceWorkerEnabled) {
                 this.requests = this.requests.concat(requestsToSend)
