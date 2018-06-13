@@ -85,7 +85,8 @@ export function initContainer(): boolean {
     container.set(HttpServiceName.CallHttpClient, () => new CallHttpClient(
         container.get(HttpServiceName.HttpClient),
         container.get(HttpServiceName.BatchHttpClient),
-        container.get(SerializationServiceName.Serializer)
+        container.get(SerializationServiceName.Encoder),
+        container.get(SerializationServiceName.Normalizer)
     ))
     container.set(HttpServiceName.HttpClient, () => new WebHttpClient())
     container.set(HttpServiceName.BatchHttpClient, () => new JsonBatchHttpClient(container.get(HttpServiceName.HttpClient)))

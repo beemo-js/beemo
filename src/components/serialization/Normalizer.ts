@@ -20,6 +20,10 @@ export class Normalizer {
             return instance.map(i => this.normalize<T>(classFn, i, group))
         }
 
+        if (classFn === Object) {
+            return instance as Object
+        }
+
         const mappedFields = this.classMetadataStore.getClassData(classFn)['mapped-fields'] as { [field: string]: MappedFieldConfiguration }
 
         const result = {}
@@ -67,6 +71,10 @@ export class Normalizer {
         // if input is an array, return an array of converted inputs
         if (Array.isArray(data)) {
             return data.map(i => this.denormalize<T>(classFn, i, group) as T)
+        }
+
+        if (classFn === Object) {
+            return data as T
         }
 
         // create instance of output

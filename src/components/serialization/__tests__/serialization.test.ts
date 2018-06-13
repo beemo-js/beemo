@@ -83,6 +83,9 @@ test('Normalize from instance', () => {
     })
 })
 
+test('Normalize object', () => {
+    expect(normalizer.normalize(Object, {a: 'b', c: 'd'})['a']).toBe('b')
+})
 
 function userToDenormalize(): Object {
     return {
@@ -115,6 +118,10 @@ test('Denormalize with group', () => {
     expect(denormalizedUser.username).toBe('user2')
     expect(denormalizedUser.ignoredProperty).toBe(undefined)
     expect(denormalizedUser.foo).toBeInstanceOf(Foo)
+})
+
+test('Denormalize object', () => {
+    expect(normalizer.denormalize(Object, {a: 'b', c: 'd'})['a']).toBe('b')
 })
 
 test('Class-to-class mapping', () => {
