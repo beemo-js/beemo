@@ -22,7 +22,12 @@ export abstract class KVEntityStore<E extends Entity<Id>, Id> implements EntityS
         return await this.kvStore.get<E>(this.entityPath(id))
     }
 
-    async save(entity: E): Promise<boolean> {
+    async save(entity: E|E[]): Promise<boolean> {
+        if (Array.isArray(entity)) {
+            await entity.forEach(async e => await this.save(e))
+            return true
+        }
+
         return await this.kvStore.set(this.entityPath(entity.id), entity)
     }
 
