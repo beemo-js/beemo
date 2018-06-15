@@ -1,4 +1,4 @@
-# ![Beemo](assets/logo.png)
+# <p align="middle"><img src="assets/logo.png" width="400px" alt="Beemo" /></p>
 
 **ABSOLUTELY NOT READY FOR PROD!**
 
