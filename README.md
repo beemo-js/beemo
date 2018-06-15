@@ -1,4 +1,4 @@
-# Beemo
+# ![Beemo](assets/logo.png)
 
 **ABSOLUTELY NOT READY FOR PROD!**
 
