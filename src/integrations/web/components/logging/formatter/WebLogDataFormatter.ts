@@ -1,4 +1,4 @@
-import {LogDataFormatter} from './LogDataFormatter'
+import {LogDataFormatter} from '../../../../../components/logging/formatter/LogDataFormatter'
 
 export class WebLogDataFormatter implements LogDataFormatter {
     format(log: Object): Object {

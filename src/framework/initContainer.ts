@@ -2,9 +2,18 @@ import {container} from './globalContainer'
 import {
     AnnotationsServiceName,
     CacheServiceName,
-    ConfigServiceName, ConversionServiceName, DiServiceName, EventsServiceName, HttpServiceName, LoggingServiceName,
-    MetadataServiceName, PermissionsServiceName,
-    PersistenceServiceName, SerializationServiceName, ThreadsServiceName, TypesServiceName, ValidationServiceName
+    ConfigServiceName,
+    ConversionServiceName,
+    DiServiceName,
+    EventsServiceName,
+    HttpServiceName,
+    LoggingServiceName,
+    MetadataServiceName,
+    PersistenceServiceName,
+    SerializationServiceName,
+    ThreadsServiceName,
+    TypesServiceName,
+    ValidationServiceName
 } from './services'
 import {ClassAnnotationsStore} from '../components/annotations/ClassAnnotationsStore'
 import {Cache} from '../components/cache/Cache'
@@ -14,10 +23,8 @@ import {ReflectionServiceManager} from '../components/di/ReflectionServiceManage
 import {EventBus} from '../components/events/EventBus'
 import {CallAnnotationsHandler} from '../components/http/factory/call/CallAnnotationsHandler'
 import {CallHttpClient} from '../components/http/call/CallHttpClient'
-import {WebHttpClient} from '../components/http/client/WebHttpClient'
 import {JsonBatchHttpClient} from '../components/http/batch/JsonBatchHttpClient'
 import {BatchRequestsQueue} from '../components/http/queue/BatchRequestsQueue'
-import {WebLogDataFormatter} from '../components/logging/formatter/WebLogDataFormatter'
 import {ConsoleLogger} from '../components/logging/logger/ConsoleLogger'
 import {LoggingBag} from '../components/logging/LoggingBag'
 import {LogsOrchestrationWorker} from '../components/logging/orchestration/LogsOrchestrationWorker'
@@ -25,14 +32,12 @@ import {HttpLogsOrchestrator} from '../components/logging/orchestration/HttpLogs
 import {Request} from '../components/http/abstractions/Request'
 import {NameResolver} from '../components/metadata/NameResolver'
 import {ClassMetadataStore} from '../components/metadata/ClassMetadataStore'
-import {WebPermissionsRequester} from '../components/permissions/requester/WebPermissionsRequester'
 import {InMemoryKVStore} from '../components/persistence/kvstore/InMemoryKVStore'
 import {ComposableSerializer} from '../components/serialization/serializers/ComposableSerializer'
 import {JsonEncoder} from '../components/serialization/encoders/JsonEncoder'
 import {ClassMapper} from '../components/serialization/ClassMapper'
 import {Normalizer} from '../components/serialization/Normalizer'
 import {BackgroundLoop} from '../components/threads/loop/BackgroundLoop'
-import {WebBackgroundTaskManager} from '../components/threads/background/WebBackgroundTaskManager'
 import {ReflectionClassTypesStore} from '../components/types/ReflectionClassTypesStore'
 import {ClassTypesStore} from '../components/types/ClassTypesStore'
 import {Validator} from '../components/validation/Validator'
@@ -88,7 +93,6 @@ export function initContainer(): boolean {
         container.get(SerializationServiceName.Encoder),
         container.get(SerializationServiceName.Normalizer)
     ))
-    container.set(HttpServiceName.HttpClient, () => new WebHttpClient())
     container.set(HttpServiceName.BatchHttpClient, () => new JsonBatchHttpClient(container.get(HttpServiceName.HttpClient)))
     container.set(HttpServiceName.RequestsQueue, () => new BatchRequestsQueue(
         container.get(HttpServiceName.BatchHttpClient),
@@ -97,7 +101,6 @@ export function initContainer(): boolean {
 
     // Logging
 
-    container.set(LoggingServiceName.LogDataFormatter, () => new WebLogDataFormatter())
     container.set(LoggingServiceName.Logger, () => new ConsoleLogger(container.get(LoggingServiceName.LogDataFormatter)))
     container.set(LoggingServiceName.LoggingBag, () => new LoggingBag())
     container.set(LoggingServiceName.LogsOrchestrationWorker, () => new LogsOrchestrationWorker(
@@ -114,10 +117,6 @@ export function initContainer(): boolean {
 
     container.set(MetadataServiceName.NameResolver, () => new NameResolver({}))
     container.set(MetadataServiceName.ClassMetadataStore, () => new ClassMetadataStore())
-
-    // Permissions
-
-    container.set(PermissionsServiceName.PermissionsRequester, () => new WebPermissionsRequester())
 
     // Persistence
 
@@ -139,7 +138,6 @@ export function initContainer(): boolean {
         container.get(ThreadsServiceName.BackgroundTaskManager),
         10
     ))
-    container.set(ThreadsServiceName.BackgroundTaskManager, () => new WebBackgroundTaskManager())
 
     // Types
 

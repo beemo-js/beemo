@@ -1,6 +1,6 @@
-import {HttpClient} from './HttpClient'
-import {Request as AbstractRequest} from '../abstractions/Request'
-import {Response as AbstractResponse} from '../abstractions/Response'
+import {HttpClient} from '../../../../../components/http/client/HttpClient'
+import {Request as AbstractRequest} from '../../../../../components/http/abstractions/Request'
+import {Response as AbstractResponse} from '../../../../../components/http/abstractions/Response'
 
 export class WebHttpClient implements HttpClient {
 

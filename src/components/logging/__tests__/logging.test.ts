@@ -1,5 +1,5 @@
 import {LoggingBag} from '../LoggingBag'
-import {WebLogDataFormatter} from '../formatter/WebLogDataFormatter'
+import {WebLogDataFormatter} from '../../../integrations/web/components/logging/formatter/WebLogDataFormatter'
 import {BatchLogger} from '../logger/BatchLogger'
 
 test('Logger', () => {

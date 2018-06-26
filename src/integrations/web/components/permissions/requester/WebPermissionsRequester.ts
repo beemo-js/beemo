@@ -1,5 +1,5 @@
-import {PermissionsRequester} from './PermissionsRequester'
-import {Permission} from '../Permission'
+import {PermissionsRequester} from '../../../../../components/permissions/requester/PermissionsRequester'
+import {Permission} from '../../../../../components/permissions/Permission'
 
 export class WebPermissionsRequester implements PermissionsRequester {
     request(permission: Permission): Promise<boolean> {
