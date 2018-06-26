@@ -48,6 +48,13 @@ export abstract class CallFactory {
         return this.buildRequestCall<T>(new Request(url, { method: 'PUT', ...requestOptions }), {classFn, responseBodyFormatter})
     }
 
+    protected patch<T>(
+        url: string = '',
+        {classFn = this.classFn, requestOptions = {}, responseBodyFormatter = this.baseResponseBodyFormatter}: callOptions = {}
+    ): Call<T> {
+        return this.buildRequestCall<T>(new Request(url, { method: 'PATCH', ...requestOptions }), {classFn, responseBodyFormatter})
+    }
+
     protected delete<T>(
         url: string = '',
         {classFn = this.classFn, requestOptions = {}, responseBodyFormatter = this.baseResponseBodyFormatter}: callOptions = {}
