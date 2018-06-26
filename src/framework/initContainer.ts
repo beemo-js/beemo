@@ -30,7 +30,6 @@ import {LoggingBag} from '../components/logging/LoggingBag'
 import {LogsOrchestrationWorker} from '../components/logging/orchestration/LogsOrchestrationWorker'
 import {HttpLogsOrchestrator} from '../components/logging/orchestration/HttpLogsOrchestrator'
 import {Request} from '../components/http/abstractions/Request'
-import {NameResolver} from '../components/metadata/NameResolver'
 import {ClassMetadataStore} from '../components/metadata/ClassMetadataStore'
 import {InMemoryKVStore} from '../components/persistence/kvstore/InMemoryKVStore'
 import {ComposableSerializer} from '../components/serialization/serializers/ComposableSerializer'
@@ -73,8 +72,7 @@ export function initContainer(): boolean {
         container.get(TypesServiceName.ReflectionClassTypesStore),
         container.get(AnnotationsServiceName.ClassAnnotationsStore),
         container.get(DiServiceName.Container),
-        container.get(ConfigServiceName.ConfigurationStore),
-        container.get(MetadataServiceName.NameResolver)
+        container.get(ConfigServiceName.ConfigurationStore)
     ))
 
     // Events
@@ -115,7 +113,6 @@ export function initContainer(): boolean {
 
     // Metadata
 
-    container.set(MetadataServiceName.NameResolver, () => new NameResolver({}))
     container.set(MetadataServiceName.ClassMetadataStore, () => new ClassMetadataStore())
 
     // Persistence

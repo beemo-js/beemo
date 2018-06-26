@@ -1,6 +1,5 @@
 import {ClassTypesStore} from './ClassTypesStore'
 import {ReflectionClassTypesStore} from './ReflectionClassTypesStore'
-import {NameResolver} from '../metadata/NameResolver'
 import {container} from '../../framework/globalContainer'
 import {ReturnType, Type} from './annotations/annotations'
 import {TypesServiceName} from '../../framework/services'
@@ -20,9 +19,6 @@ namespace TestNamespace {
     }
 }
 
-const nameResolver = new NameResolver({ User })
-nameResolver.registerNamespaces({ TestNamespace })
-
 const classTypesStore = container.get<ClassTypesStore>(TypesServiceName.ClassTypesStore)
 const reflectionClassTypesStore = container.get<ReflectionClassTypesStore>(TypesServiceName.ReflectionClassTypesStore)
 
@@ -35,7 +31,6 @@ console.log('Set prop type:', classTypesStore.getPropertyType(TestNamespace.Test
 
 function LogClass(): any {
     return (target, key, descriptor) => {
-        console.log(nameResolver.findName(target))
         console.log('Constructor first params type:', reflectionClassTypesStore.getConstructorParameterType(target, 0))
         console.log('Constructor params types:', reflectionClassTypesStore.getConstructorParametersTypes(target))
     }

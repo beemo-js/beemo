@@ -1,10 +1,6 @@
 import {Validator} from './Validator'
-import {NameResolver} from '../metadata/NameResolver'
 
-export function registerValidators(
-    validator: Validator,
-    nameResolver?: NameResolver
-) {
+export function registerValidators(validator: Validator) {
 
     // Global
 
@@ -135,7 +131,7 @@ export function registerValidators(
     validator.registerValidator(
         'valid',
         (value, {classFn}) => validator.validateClassInstance(value, classFn).length === 0,
-        (value, {classFn}) => `Value does not pass validation of class ${nameResolver.findName(classFn)}`
+        (value, {classFn}) => `Value does not pass validation of class ${classFn}`
     )
 
 }

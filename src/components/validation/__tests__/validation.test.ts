@@ -1,9 +1,8 @@
 import {Validator} from '../Validator'
 import {registerValidators} from '../validators'
-import {NameResolver} from '../../metadata/NameResolver'
 import {container} from '../../../framework/globalContainer'
 import {ValidatedParameters} from '../annotations/ValidatedParameters'
-import {MetadataServiceName, ValidationServiceName} from '../../../framework/services'
+import {ValidationServiceName} from '../../../framework/services'
 import {initContainer} from '../../../framework/initContainer'
 import {Min, Typed, Valid} from '../annotations/constraints'
 import {min} from '../builders'
@@ -11,7 +10,7 @@ import {min} from '../builders'
 initContainer()
 
 const validator = container.get<Validator>(ValidationServiceName.Validator)
-registerValidators(validator, container.get<NameResolver>(MetadataServiceName.NameResolver))
+registerValidators(validator)
 
 class User {
     @Min(4)

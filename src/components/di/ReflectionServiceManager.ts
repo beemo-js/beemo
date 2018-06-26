@@ -3,7 +3,6 @@ import {ClassAnnotationsStore} from '../annotations/ClassAnnotationsStore'
 import {ReflectionClassTypesStore} from '../types/ReflectionClassTypesStore'
 import {primitiveTypes} from '../types/primitiveTypes'
 import {ConfigurationStore} from '../config/ConfigurationStore'
-import {NameResolver} from '../metadata/NameResolver'
 import {FromConfig, Inject, Service} from './annotations/annotations'
 
 export class ReflectionServiceManager {
@@ -12,8 +11,7 @@ export class ReflectionServiceManager {
         private reflectionClassTypesStore: ReflectionClassTypesStore,
         private classAnnotationsStore: ClassAnnotationsStore,
         private container: Container,
-        private configurationStore: ConfigurationStore,
-        private nameResolver: NameResolver
+        private configurationStore: ConfigurationStore
     ) {}
 
     // Register a service to the container
@@ -65,7 +63,7 @@ export class ReflectionServiceManager {
 
         // basic type without manual definition
         if (primitiveTypes.indexOf(paramType) !== -1) {
-            throw `No definition exists in DI container for param #${paramIndex} of class ${this.nameResolver.findName(target)} constructor`
+            throw `No definition exists in DI container for param #${paramIndex} of class ${target} constructor`
         }
 
         // get from arg type
