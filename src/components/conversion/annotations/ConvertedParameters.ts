@@ -6,7 +6,9 @@ import {Converter} from '../Converter'
 import {Convert as ConverterAnnotation} from './converters'
 import {AnnotationsServiceName, ConversionServiceName} from '../../../framework/services'
 
-// Converts method parameters
+/**
+ * Converts method parameters.
+ */
 export function ConvertedParameters(): MethodDecorator {
     return (target: any, method: string, descriptor: PropertyDescriptor) => {
         const classAnnotationsStore = container.get<ClassAnnotationsStore>(AnnotationsServiceName.ClassAnnotationsStore)

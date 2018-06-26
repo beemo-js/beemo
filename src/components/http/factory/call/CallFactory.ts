@@ -8,6 +8,9 @@ type callOptions = {
     responseBodyFormatter?: (body: Object) => Object
 }
 
+/**
+ * Builds Call instances.
+ */
 export abstract class CallFactory {
     constructor(
         protected classFn: Function,

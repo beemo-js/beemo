@@ -1,6 +1,9 @@
 import {LoggingBag} from '../LoggingBag'
 import {LogsOrchestrator} from './LogsOrchestrator'
 
+/**
+ * Worker that handle logs stored in logging bag.
+ */
 export class LogsOrchestrationWorker {
     private intervalId: number
 

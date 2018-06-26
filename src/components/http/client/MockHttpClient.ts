@@ -3,11 +3,11 @@ import {Response} from '../abstractions/Response'
 import {Request} from '../abstractions/Request'
 import {MockServer} from '../server/MockServer'
 
-type route  = {
-    pattern: string,
-    controller: (request: Request) => Response
-}
-
+/**
+ * Mock HTTP client.
+ * Requests will go to an embedded mock server.
+ * Useful for quick prototyping.
+ */
 export class MockHttpClient implements HttpClient {
     constructor(
         private mockServer: MockServer,

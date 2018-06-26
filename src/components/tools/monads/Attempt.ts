@@ -1,3 +1,6 @@
+/**
+ * Monad to handle exceptions.
+ */
 export class Attempt<T> {
     constructor(
         private value: T,

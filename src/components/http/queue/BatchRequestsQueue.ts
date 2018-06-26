@@ -2,7 +2,9 @@ import {BatchHttpClient} from '../batch/BatchHttpClient'
 import {RequestsQueue} from './RequestsQueue'
 import {Request} from '../abstractions/Request'
 
-// Send queued requests when network is available
+/**
+ * Sends queued requests when network is available in a batch request.
+ */
 export class BatchRequestsQueue implements RequestsQueue {
 
     private requests: Request[] = []
@@ -22,7 +24,6 @@ export class BatchRequestsQueue implements RequestsQueue {
         return this.sendRequests()
     }
 
-    // Returns true if requests could be sent immediately
     async sendRequests(): Promise<boolean> {
         const requestsToSend = this.requests.splice(0)
         try {

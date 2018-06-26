@@ -20,6 +20,7 @@ export class Normalizer {
             return instance.map(i => this.normalize<T>(classFn, i, group))
         }
 
+        // if classFN is Object, return as is
         if (classFn === Object) {
             return instance as Object
         }
@@ -73,6 +74,7 @@ export class Normalizer {
             return data.map(i => this.denormalize<T>(classFn, i, group) as T)
         }
 
+        // if classFN is Object, return as is
         if (classFn === Object) {
             return data as T
         }

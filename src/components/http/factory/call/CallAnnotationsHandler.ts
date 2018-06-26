@@ -3,12 +3,18 @@ import {ClassAnnotationsStore} from '../../../annotations/ClassAnnotationsStore'
 import {Call} from '../../call/Call'
 import {Body, Header, UrlParam} from '../../annotations/call_factory'
 
+/**
+ * Fills the call returned from method with data in parameters.
+ */
 export class CallAnnotationsHandler {
     constructor(
         private classAnnotationsStore: ClassAnnotationsStore,
         private serializer: Serializer
     ) {}
 
+    /**
+     * Fills the call returned from method with data in parameters.
+     */
     handle<T>(call: Call<T>, classFn: Function, method: string, args: any[]): void {
         this.setBody(call, classFn, method, args)
         this.setUrlParams(call, classFn, method, args)

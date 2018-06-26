@@ -1,6 +1,8 @@
 import {BackgroundTaskManager} from '../background/BackgroundTaskManager'
 
-// Executes a task again and again in background
+/**
+ * Executes a task again and again in background.
+ */
 export class BackgroundLoop {
     private tasks: Object = {}
 

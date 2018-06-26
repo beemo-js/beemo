@@ -5,14 +5,6 @@ import {MappedFieldConfiguration} from '../types'
 import {Normalizer} from '../Normalizer'
 import {AnnotationsServiceName, MetadataServiceName} from '../../../framework/services'
 
-function getFieldsByGroup(config: MappedFieldConfiguration): { [group: string]: string } {
-    const result = {}
-    for (let group in config) {
-        result[group] = config[group].name
-    }
-    return result
-}
-
 function fillInversedFieldsByGroup(inversedMappedFields: Object, propertyKey: string, config: MappedFieldConfiguration): void {
     for (let group in config) {
         if (!inversedMappedFields[group]) {
@@ -22,7 +14,9 @@ function fillInversedFieldsByGroup(inversedMappedFields: Object, propertyKey: st
     }
 }
 
-// Map property name to parsed field name
+/**
+ * Register property as a normalizable one.
+ */
 export function MappedField(config?: string|MappedFieldConfiguration): PropertyDecorator {
     return (target: any, propertyKey: string) => {
         const classMetadataStore = container.get<ClassMetadataStore>(MetadataServiceName.ClassMetadataStore)

@@ -1,5 +1,8 @@
 import {ConfigurationStore} from './ConfigurationStore'
 
+/**
+ * In-memory configuration store.
+ */
 export class InMemoryConfigurationStore implements ConfigurationStore {
 
     constructor(

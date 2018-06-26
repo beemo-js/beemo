@@ -5,6 +5,9 @@ import {Normalizer} from "../../serialization/Normalizer";
 import {Encoder} from "../../serialization/encoders/Encoder";
 import {Response} from "../abstractions/Response";
 
+/**
+ * Retrieves the value of Call resources.
+ */
 export class CallHttpClient {
     constructor(
         private httpClient: HttpClient,
@@ -21,6 +24,9 @@ export class CallHttpClient {
         )
     }
 
+    /**
+     * Retrieve value of one Call.
+     */
     private async retrieveCallData(call: Call<any>): Promise<any> {
         if (!call.retrieved) {
             const response = await this.httpClient.sendRequest(call.request)
@@ -30,6 +36,9 @@ export class CallHttpClient {
         return call.get()
     }
 
+    /**
+     * Retrieve value of a list of Calls.
+     */
     private async retrieveDataArray(calls: Call<any>[]): Promise<any[]> {
         const requestsToSend = calls
             .map((rd, index) => [rd, index])
@@ -44,6 +53,9 @@ export class CallHttpClient {
         return calls.map(rd => rd.value)
     }
 
+    /**
+     * Retrieve value of Calls in a dict of calls.
+     */
     private async retrieveDataObject(requestsData: Object): Promise<Object> {
         const result = Object.assign({}, requestsData)
 
@@ -55,6 +67,9 @@ export class CallHttpClient {
         return result
     }
 
+    /**
+     * Set the value of given Call from HTTP response.
+     */
     private parseCallResponseData<T>(call: Call<any>, response: Response): void {
         const rawResponseData = this.encoder.decode(response.body)
         const formattedResponseData = call.responseFormatter(rawResponseData)

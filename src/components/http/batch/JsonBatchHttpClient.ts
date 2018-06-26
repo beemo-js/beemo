@@ -3,6 +3,10 @@ import {HttpClient} from '../client/HttpClient'
 import {Request} from '../abstractions/Request'
 import {Response} from '../abstractions/Response'
 
+/**
+ * Batches requests by serializing them into JSON.
+ * They are described in the batch request's body.
+ */
 export class JsonBatchHttpClient implements BatchHttpClient {
     constructor(
         private httpClient: HttpClient,

@@ -4,6 +4,9 @@ import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
 import {CallAnnotationsHandler} from '../factory/call/CallAnnotationsHandler'
 import {AnnotationsServiceName, HttpServiceName} from '../../../framework/services'
 
+/**
+ * Fills the call returned from method with data in parameters.
+ */
 export function HandledCall(): MethodDecorator {
     return (target: Function, propertyKey: string, descriptor: any) => {
         applyMiddleware(descriptor, (next, args) => {
@@ -15,6 +18,11 @@ export function HandledCall(): MethodDecorator {
     }
 }
 
+/**
+ * Maps given parameter to call request's body.
+ *
+ * @param classFn class to refer to when serializing the parameter.
+ */
 export function Body(classFn: Function): ParameterDecorator {
     return (target: Function, propertyKey: string, parameterIndex: number) => {
         container.get<ClassAnnotationsStore>(AnnotationsServiceName.ClassAnnotationsStore)
@@ -22,6 +30,9 @@ export function Body(classFn: Function): ParameterDecorator {
     }
 }
 
+/**
+ * Maps given parameter to call request's url parameters.
+ */
 export function UrlParam(name: string): ParameterDecorator {
     return (target: Function, propertyKey: string, parameterIndex: number) => {
         container.get<ClassAnnotationsStore>(AnnotationsServiceName.ClassAnnotationsStore)
@@ -29,6 +40,9 @@ export function UrlParam(name: string): ParameterDecorator {
     }
 }
 
+/**
+ * Maps given parameter to call request's headers.
+ */
 export function Header(name: string): ParameterDecorator {
     return (target: Function, propertyKey: string, parameterIndex: number) => {
         container.get<ClassAnnotationsStore>(AnnotationsServiceName.ClassAnnotationsStore)

@@ -1,3 +1,6 @@
+/**
+ * Monad to pipe value through a list of functions.
+ */
 export class Pipe<T> {
     constructor(
         private value: T

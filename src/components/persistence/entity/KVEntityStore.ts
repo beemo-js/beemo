@@ -2,6 +2,9 @@ import {KVStore} from '../kvstore/KVStore'
 import {Entity} from './Entity'
 import {EntityStore} from './EntityStore'
 
+/**
+ * Enity store implementation using a KV store.
+ */
 export abstract class KVEntityStore<E extends Entity<Id>, Id> implements EntityStore<E, Id> {
     constructor(
         protected kvStore: KVStore,

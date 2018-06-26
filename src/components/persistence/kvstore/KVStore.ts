@@ -1,3 +1,6 @@
+/**
+ * Key-Value store.
+ */
 export interface KVStore {
     all<T>(): Promise<T[]>
     get<T>(key: string): Promise<T>

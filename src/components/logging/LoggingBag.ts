@@ -1,3 +1,6 @@
+/**
+ * Logs are stored here before being handled by a worker.
+ */
 export class LoggingBag
 {
     private logs: Object[] = []

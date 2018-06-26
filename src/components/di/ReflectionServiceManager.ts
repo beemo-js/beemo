@@ -5,6 +5,9 @@ import {primitiveTypes} from '../types/primitiveTypes'
 import {ConfigurationStore} from '../config/ConfigurationStore'
 import {FromConfig, Inject, Service} from './annotations/annotations'
 
+/**
+ * Handles services registration using its constructor parameters' reflected types.
+ */
 export class ReflectionServiceManager {
 
     constructor(
@@ -14,7 +17,9 @@ export class ReflectionServiceManager {
         private configurationStore: ConfigurationStore
     ) {}
 
-    // Register a service to the container
+    /**
+     * Register a service to the container.
+     */
     registerService(classFn: any, id?: string): void {
         const serviceIdentifier: string|Function = id || classFn
 
@@ -37,17 +42,23 @@ export class ReflectionServiceManager {
         })
     }
 
-    // Registers a constructor param dependency
+    /**
+     * Registers a constructor param dependency.
+     */
     addConstructorParameterDependency(target: any, paramIndex: number, id: string|Function): void {
         this.classAnnotationsStore.addConstructorParameterAnnotation(target, paramIndex, Inject, { id })
     }
 
-    // Registers a constructor param dependency defined from configuration
+    /**
+     * Registers a constructor param dependency defined from configuration.
+     */
     addConstructorParameterConfigDependency(target: any, paramIndex: number, key: string): void {
         this.classAnnotationsStore.addConstructorParameterAnnotation(target, paramIndex, FromConfig, { key })
     }
 
-    // Resolve the service id of a constructor param
+    /**
+     * Resolve the service id of a constructor param.
+     */
     private resolveDependency(target: any, paramType: Function, paramIndex: number): string {
         // value defined in configuration
         const configAnnotations = this.classAnnotationsStore.getConstructorParameterAnnotations(target, paramIndex, FromConfig)

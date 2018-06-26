@@ -6,7 +6,9 @@ import {Validator} from '../Validator'
 import {Constraints as ValidatorAnnotation} from './constraints'
 import {AnnotationsServiceName, ValidationServiceName} from '../../../framework/services'
 
-// Validates method parameters
+/**
+ * Validates method parameters.
+ */
 export function ValidatedParameters(): MethodDecorator {
     return (target: any, method: string, descriptor: PropertyDescriptor) => {
         const classAnnotationsStore = container.get<ClassAnnotationsStore>(AnnotationsServiceName.ClassAnnotationsStore)

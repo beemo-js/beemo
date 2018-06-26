@@ -1,12 +1,18 @@
 import {ClassMetadataStore} from '../metadata/ClassMetadataStore'
 
 interface AnnotationData {
-    type: Function
-    data: Object
+    type: Function // Type of annotation
+    data: Object // Annotation data
 }
 
+/**
+ * Stores classes annotations (class, constructor, properties, methods and method parameters annotations).
+ */
 export class ClassAnnotationsStore {
 
+    /**
+     * Key used for annotations in class metadata store.
+     */
     private annotationsKey = 'annotations'
 
     constructor(
@@ -63,6 +69,10 @@ export class ClassAnnotationsStore {
         this.getMethodParameterAnnotations(classFn, methodName, index).unshift({ type, data })
     }
 
+    /**
+     * Get the list of annotations in obj or create an empty one.
+     * If type is provided, only get the annotations having given type.
+     */
     private getObjectAnnotations(obj: Object, type: Function = null): AnnotationData[] {
         if (!obj[this.annotationsKey]) obj[this.annotationsKey] = []
         return type === null ?

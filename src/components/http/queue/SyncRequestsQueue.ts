@@ -2,6 +2,9 @@ import {RequestsQueue} from './RequestsQueue'
 import {HttpClient} from '../client/HttpClient'
 import {Request} from '../abstractions/Request'
 
+/**
+ * Sends queued requests one by one.
+ */
 export class SyncRequestsQueue implements RequestsQueue {
 
     private requests: Request[] = []
@@ -20,7 +23,9 @@ export class SyncRequestsQueue implements RequestsQueue {
         return this.sendRequests()
     }
 
-    // Returns true if requests could be sent immediately
+    /**
+     * Returns true if requests could be sent immediately
+     */
     private async sendRequest(request: Request): Promise<boolean> {
         try {
             await this.httpClient.sendRequest(request)
@@ -34,7 +39,6 @@ export class SyncRequestsQueue implements RequestsQueue {
         }
     }
 
-    // Returns true only if all requests have been sent
     async sendRequests(): Promise<boolean> {
         const len = this.requests.length
         let request: Request

@@ -19,7 +19,9 @@ import {
     decodeUrl
 } from '../builders'
 
-// Returns a converter annotation
+/**
+ * Returns a converter annotation.
+ */
 export const Convert = (data: ConverterData) => (target: any, key: string, index?: number) => {
     const classAnnotationsStore = container.get<ClassAnnotationsStore>(AnnotationsServiceName.ClassAnnotationsStore)
 

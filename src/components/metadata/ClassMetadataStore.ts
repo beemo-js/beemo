@@ -31,6 +31,9 @@
 //   }
 // }
 
+/**
+ * Store of metadata for classes.
+ */
 export class ClassMetadataStore {
 
     private metadata = new Map<Function, Object>()

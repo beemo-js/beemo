@@ -3,6 +3,10 @@ import {HttpClient} from '../client/HttpClient'
 import {Request} from '../abstractions/Request'
 import {Response} from '../abstractions/Response'
 
+/**
+ * Sends batched requests one by one.
+ * To use when requests batching is not desired.
+ */
 export class NoBatchHttpClient implements BatchHttpClient {
     constructor(
         private httpClient: HttpClient

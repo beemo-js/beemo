@@ -3,19 +3,28 @@ import {ClassAnnotationsStore} from '../annotations/ClassAnnotationsStore'
 import {Constraints as ValidatorAnnotation} from './annotations/constraints'
 
 export class Validator {
-    private validators = {}
+    /**
+     * Maps validator ids to validators.
+     */
+    private validators: {[validatorId: string]: {validator: ValidatorType, errorMessage: (value, Object) => string}} = {}
 
     constructor(
         private classAnnotationsStore: ClassAnnotationsStore
     ) {}
 
-    registerValidator(validatorId: string, validator: ValidatorType, errorMessage: Function): void {
+    /**
+     * Register a validator. The Validator will then know how to validate a value using given validator id.
+     */
+    registerValidator(validatorId: string, validator: ValidatorType, errorMessage: (value, Object) => string): void {
         this.validators[validatorId] = {
             validator,
             errorMessage
         }
     }
 
+    /**
+     * Validate a value using given validators.
+     */
     validate(value: any, validatorsData: ValidatorData[]): ValidatorError[] {
         return validatorsData
             .map(validatorData => {
@@ -30,6 +39,9 @@ export class Validator {
             .filter(i => !!i)
     }
 
+    /**
+     * Validate a class instance.
+     */
     validateClassInstance(value: any, classFn: Function): Object[] {
         return Object.getOwnPropertyNames(value)
             .map(prop => ({

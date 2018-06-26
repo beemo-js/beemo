@@ -1,3 +1,6 @@
+/**
+ * Monad to handle nullable values.
+ */
 export class Optional<T> {
     constructor(
         private value: T,
