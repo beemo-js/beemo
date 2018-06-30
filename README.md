@@ -15,9 +15,7 @@ Here are the main features and goals of Beemo:
 - **Helps building apps with a clean architecture**: Beemo makes architectural patterns like Dependency Injection easy to use
 - **Lightweight**: the full bundle currently weights ~15kb minimized and gzipped, and this size can be further reduced thanks to the modularity of Beemo's components and tree shaking
 
-**ABSOLUTELY NOT READY FOR PROD!**
-
-This is a work in progress.
+Note that this is a work in progress, and absolutely not ready for prod.
 
 ## Install
 
