@@ -1,5 +1,11 @@
 # Logging
 
+Beemo provides tools to do logging in a flexible enough way to fit with your backend logging solution.
+
+## Console logger
+
+This logger logs directly to console. It's useful for local development.
+
 ```ts
 const logger = new ConsoleLogger(new WebLogDataFormatter())
 
@@ -19,10 +25,13 @@ logger.log({
 
 ## Batch logger
 
-Batch logger is used like other loggers, but logs are aggregated into a logs bag and handled by batches by a worker.
+In production, batch logger should be used instead. It aggregates logs into a logs bag; these logs are then handled by batches by a worker.
 
 ```ts
-const logger = new BatchLogger(new WebLogDataFormatter(), new LoggingBag())
+const loggingBag = new LoggingBag()
+const logger = new BatchLogger(new WebLogDataFormatter(), loggingBag)
+const logsOrchestrationWorker = new LogsOrchestrationWorker(loggingBag, httpLogsOrchestrator, 5000) // send logs to server via HTTP every 5 seconds
+logsOrchestrationWorker.start()
 
 logger.log({
     key: 'value'

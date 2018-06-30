@@ -4,12 +4,12 @@ import {initContainer} from '../../../framework/initContainer'
 initContainer()
 
 class Foo {
-    @Cached(() => 'test')
+    @Cached(([bar]) => `test:${bar}`)
     async bar(bar: string): Promise<string> {
         return await bar
     }
 
-    @Cached(() => 'test')
+    @Cached(() => 'test:wanted')
     async baz(): Promise<string> {
         return await 'not wanted'
     }

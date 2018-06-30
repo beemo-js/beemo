@@ -1,5 +1,7 @@
 # Events
 
+This module provides a simple way to structure your code around events, using an event bus.
+
 ## Event bus
 
 First declare event types:

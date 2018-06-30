@@ -1,12 +1,29 @@
 # Validation
 
+This module provides tools to validate values using existing or custom validators.
+
 ## Validate a value
 
+This example validates the value `5` using a list of validators (`positive` and `max`). The second one will fail.
+
 ```ts
-validator.validate(5, [positive(), max(10)])
+validator.validate(5, [positive(), max(4)])
+```
+
+`validate` returns a list of errors, empty if validation succeeded, with the validator id and a message for each error:
+
+```ts
+[
+  {
+    id: 'max',
+    message: 'Value should be lower than or equal to 4 (value given: 5)'
+  }
+]
 ```
 
 ## Validate a class instance
+
+Class instances can also be validated using `validateInstance` and annotations on class properties.
 
 ```ts
 class User {
@@ -21,16 +38,19 @@ validator.validateInstance(user, User)
 
 ## Validate method parameters
 
+Validators can also be applied to method parameters by applying the `@HandledParameters` annotation on the method.
+This way the parameters value will be validated when passed to a method call, throwing an exception if invalid.
+
 ```ts
 class TestService {
     // Checks nb is a number > 1
-    @ValidatedParameters()
+    @HandledParameters()
     foo(@Typed(Number) @Min(1) nb: number): number {
         return nb * 2
     }
 
     // Checks user is a valid one
-    @ValidatedParameters()
+    @HandledParameters()
     bar(@Valid(User) user: User): number {
         return user.id
     }
@@ -38,6 +58,8 @@ class TestService {
 ```
 
 ## Validators
+
+Here is the list of validators integrated into Beemo.
 
 Global:
 

@@ -1,19 +1,9 @@
 # Tools
 
+The tools provided here a helpers to handle some common cases in an elegant way.
+You can use them to make your code easier to read and understand.
+
 ## Annotations
-
-### `@HandledParameters`
-
-Simply an alias for `ValidatedParameters` + `ConvertedParameters`.
-
-```ts
-class Foo {
-    @HandledParameters()
-    bar(@NotEmpty() @Sorted() nbs: number[]): number[] {
-        return nbs
-    }
-}
-```
 
 ### `@Default`
 
@@ -46,6 +36,8 @@ class Test {
 
 ## Monads
 
+This tiny set of monads may help you handle common cases in a more readable way.
+
 ### Optional
 
 A nice way to handle null values.
@@ -61,9 +53,9 @@ Optional.of('hello')
 A nice way to handle exceptions.
 
 ```ts
-Attempt.of<string>(() => doSomethingRisky())
+Attempt.of<string>(() => doSomethingRisky()) // doSomethingRisky may return a string or throw an exception
     .map(val => val.toUpperCase())
-    .getOrDefault('default value')
+    .getOrDefault('default value') // if an exception was thrown, 'default value' is returned
 ```
 
 ### Pipe
@@ -71,9 +63,9 @@ Attempt.of<string>(() => doSomethingRisky())
 A nice way to pipe functions on a value.
 
 ```ts
-Pipe.of('pipe')
+Pipe.of(' pipe')
     .map(val => val.trim())
     .map(val => val.toUpperCase())
     .map(val => val.substr(0, 2))
-    .get()
+    .get() // 'PI'
 ```
