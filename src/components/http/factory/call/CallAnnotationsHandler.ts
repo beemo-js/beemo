@@ -1,15 +1,16 @@
-import {Serializer} from '../../../serialization/serializers/Serializer'
 import {ClassAnnotationsStore} from '../../../annotations/ClassAnnotationsStore'
 import {Call} from '../../call/Call'
 import {Body, Header, UrlParam} from '../../annotations/call_factory'
+import {RequestBody} from '../../abstractions/RequestBody'
+import {Normalizer} from '../../../serialization'
 
 /**
- * Fills the call returned from method with data in parameters.
+ * Fills the call returned from method in call factory with data in parameters.
  */
 export class CallAnnotationsHandler {
     constructor(
         private classAnnotationsStore: ClassAnnotationsStore,
-        private serializer: Serializer
+        private normalizer: Normalizer
     ) {}
 
     /**
@@ -23,7 +24,7 @@ export class CallAnnotationsHandler {
 
     private setBody<T>(call: Call<T>, classFn: Function, method: string, args: any[]): void {
         this.fillFromAnnotations(call, classFn, method, args, Body, (call, arg, body) => {
-            call.request.body = this.serializer.serialize(body['data']['classFn'], arg)
+            call.request.body = RequestBody.fromData(this.normalizer.normalize(body['data']['classFn'], arg))
         })
     }
 

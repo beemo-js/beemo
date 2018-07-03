@@ -23,13 +23,11 @@ import {ReflectionServiceManager} from '../components/di/ReflectionServiceManage
 import {EventBus} from '../components/events/EventBus'
 import {CallAnnotationsHandler} from '../components/http/factory/call/CallAnnotationsHandler'
 import {CallHttpClient} from '../components/http/call/CallHttpClient'
-import {JsonBatchHttpClient} from '../components/http/batch/JsonBatchHttpClient'
 import {BatchRequestsQueue} from '../components/http/queue/BatchRequestsQueue'
 import {ConsoleLogger} from '../components/logging/logger/ConsoleLogger'
 import {LoggingBag} from '../components/logging/LoggingBag'
 import {LogsOrchestrationWorker} from '../components/logging/orchestration/LogsOrchestrationWorker'
 import {HttpLogsOrchestrator} from '../components/logging/orchestration/HttpLogsOrchestrator'
-import {Request} from '../components/http/abstractions/Request'
 import {ClassMetadataStore} from '../components/metadata/ClassMetadataStore'
 import {InMemoryKVStore} from '../components/persistence/kvstore/InMemoryKVStore'
 import {ComposableSerializer} from '../components/serialization/serializers/ComposableSerializer'
@@ -40,6 +38,7 @@ import {BackgroundLoop} from '../components/threads/loop/BackgroundLoop'
 import {ReflectionClassTypesStore} from '../components/types/ReflectionClassTypesStore'
 import {ClassTypesStore} from '../components/types/ClassTypesStore'
 import {Validator} from '../components/validation/Validator'
+import {NoBatchHttpClient, RequestBuilder} from '../components/http'
 
 let containerInitialized = false
 
@@ -83,7 +82,7 @@ export function initContainer(): boolean {
 
     container.set(HttpServiceName.CallAnnotationsHandler, () => new CallAnnotationsHandler(
         container.get(AnnotationsServiceName.ClassAnnotationsStore),
-        container.get(SerializationServiceName.Serializer)
+        container.get(SerializationServiceName.Normalizer)
     ))
     container.set(HttpServiceName.CallHttpClient, () => new CallHttpClient(
         container.get(HttpServiceName.HttpClient),
@@ -91,7 +90,7 @@ export function initContainer(): boolean {
         container.get(SerializationServiceName.Encoder),
         container.get(SerializationServiceName.Normalizer)
     ))
-    container.set(HttpServiceName.BatchHttpClient, () => new JsonBatchHttpClient(container.get(HttpServiceName.HttpClient)))
+    container.set(HttpServiceName.BatchHttpClient, () => new NoBatchHttpClient(container.get(HttpServiceName.HttpClient)))
     container.set(HttpServiceName.RequestsQueue, () => new BatchRequestsQueue(
         container.get(HttpServiceName.BatchHttpClient),
         false
@@ -108,7 +107,7 @@ export function initContainer(): boolean {
     ))
     container.set(LoggingServiceName.LogsOrchestrator, () => new HttpLogsOrchestrator(
         container.get(HttpServiceName.RequestsQueue),
-        log => new Request('/log', {body: JSON.stringify(log)})
+        log => new RequestBuilder().url('/log').body(log).build()
     ))
 
     // Metadata

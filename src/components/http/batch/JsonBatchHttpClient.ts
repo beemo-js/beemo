@@ -2,6 +2,8 @@ import {BatchHttpClient} from './BatchHttpClient'
 import {HttpClient} from '../client/HttpClient'
 import {Request} from '../abstractions/Request'
 import {Response} from '../abstractions/Response'
+import {RequestBuilder} from '../abstractions/RequestBuilder'
+import {ResponseBody} from '..'
 
 /**
  * Batches requests by serializing them into JSON.
@@ -18,13 +20,19 @@ export class JsonBatchHttpClient implements BatchHttpClient {
             return await []
         }
 
-        const globalRequest = Request.merge(this.batchRequest, batchRequest, new Request('', {
-            body: JSON.stringify(requests.map(request => this.normalizeRequest(request)))
-        }))
+        const globalRequest = Request.merge(
+            this.batchRequest,
+            batchRequest,
+            new RequestBuilder()
+                .body({
+                    requests: requests.map(request => this.normalizeRequest(request))
+                })
+                .build()
+        )
 
         const response = await this.httpClient.sendRequest(globalRequest)
-        const jsonResponse: Object[] = JSON.parse(response.body)
-        return await Promise.all(jsonResponse.map(async resp => await this.denormalizeResponse(resp, response)))
+        const jsonResponse: { 'responses': Object[] } = response.body.json()
+        return await Promise.all(jsonResponse['responses'].map(async resp => await this.denormalizeResponse(resp, response)))
     }
 
     private normalizeRequest(request: Request): Object {
@@ -37,11 +45,7 @@ export class JsonBatchHttpClient implements BatchHttpClient {
     }
 
     private denormalizeResponse(response: Object, globalResponse: Response): Response {
-        const resp = new Response(response['status'], response['body'], {
-            headers: response['headers'],
-            statusMessage: response['statusMessage']
-        })
-
+        const resp = new Response(response['status'], new ResponseBody(response['body']), response['headers'], response['statusMessage'])
         return Response.merge(globalResponse, resp)
     }
 }

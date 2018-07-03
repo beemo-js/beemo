@@ -1,5 +1,6 @@
 import {Request} from '../abstractions/Request'
 import {Response} from '../abstractions/Response'
+import {ResponseBuilder} from '../abstractions/ResponseBuilder'
 
 /**
  * Map of a route to a controller.
@@ -29,7 +30,7 @@ export class MockServer {
         const resource = this.findRoute(request.getFinalUrl())
 
         if (!resource) {
-            return await new Response(404, JSON.stringify({ message: 'Not Found' }))
+            return await new ResponseBuilder().status(404).body(JSON.stringify({ message: 'Not Found' })).build()
         }
 
         await new Promise(resolve => setTimeout(resolve, this.latency))

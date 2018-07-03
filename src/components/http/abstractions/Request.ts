@@ -1,51 +1,36 @@
-import {RequestParamsType} from '../types'
+import {RequestBody} from './RequestBody'
 
 /**
  * Abstraction of an HTTP request.
  */
 export class Request {
-    url: string
-    method: string
-    urlParameters: { [key: string]: string }
-    host: string
-    headers: { [key: string]: string }
-    body: string
-
     constructor(
-        url: string = '',
-        {
-            method = 'GET',
-            urlParameters = {},
-            host = '',
-            headers = {},
-            body = ''
-        }: RequestParamsType = {}
-    ) {
-        this.url = url
-        this.method = method
-        this.urlParameters = urlParameters
-        this.host = host
-        this.headers = headers
-        this.body = body
-    }
+        public url: string = '',
+        public method: string = 'GET',
+        public urlParameters: { [key: string]: string } = {},
+        public host: string = '',
+        public headers: { [key: string]: string } = {},
+        public body: RequestBody = new RequestBody()
+    ) {}
 
     /**
      * Clone a request.
      */
     static clone(request: Request): Request {
-        return new Request(request.url, {
-            method: request.method,
-            urlParameters: request.urlParameters,
-            host: request.host,
-            headers: request.headers,
-            body: request.body
-        })
+        return new Request(
+            request.url,
+            request.method,
+            request.urlParameters,
+            request.host,
+            request.headers,
+            request.body
+        )
     }
 
     /**
      * Merge given requests from left to right.
      * - urls are concatenated
-     * - url parameters and headers are merged
+     * - url parameters, bodies and headers are merged
      * - the rest is overridden
      */
     static merge(...requests: Request[]): Request {
@@ -56,7 +41,7 @@ export class Request {
             Object.assign(base.urlParameters, request.urlParameters)
             base.host = request.host.length ? request.host: base.host
             Object.assign(base.headers, request.headers)
-            base.body = request.body.length ? request.body: base.body
+            base.body = RequestBody.merge(base.body, request.body)
 
             return base
         }, result)

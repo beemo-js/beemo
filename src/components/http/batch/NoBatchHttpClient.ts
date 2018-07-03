@@ -4,7 +4,7 @@ import {Request} from '../abstractions/Request'
 import {Response} from '../abstractions/Response'
 
 /**
- * Sends batched requests one by one.
+ * Sends batched requests in parallel.
  * To use when requests batching is not desired.
  */
 export class NoBatchHttpClient implements BatchHttpClient {

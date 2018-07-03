@@ -71,7 +71,7 @@ export class CallHttpClient {
      * Set the value of given Call from HTTP response.
      */
     private parseCallResponseData<T>(call: Call<any>, response: Response): void {
-        const rawResponseData = this.encoder.decode(response.body)
+        const rawResponseData = this.encoder.decode(response.body.content)
         const formattedResponseData = call.responseFormatter(rawResponseData)
         const normalizedResponseData = this.normalizer.denormalize(call.classFn, formattedResponseData)
         call.set(normalizedResponseData)
