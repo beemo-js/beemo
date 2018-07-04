@@ -1,4 +1,4 @@
-import {WebHttpClient} from '../components/http/client/WebHttpClient'
+import {WebHttpRequestSender} from '../components/http/client/WebHttpRequestSender'
 import {
     HttpServiceName,
     LoggingServiceName,
@@ -23,7 +23,7 @@ export function initWebContainer() {
 
     // Http
 
-    container.set(HttpServiceName.HttpClient, () => new WebHttpClient())
+    container.set(HttpServiceName.HttpClient, () => new WebHttpRequestSender())
 
     // Logging
 

@@ -13,7 +13,7 @@ type route  = {
 }
 
 /**
- * Simple embedded mock server. Requests sent by MockHttpClient are handled by provided controllers.
+ * Simple embedded mock server. Requests sent by MockHttpRequestSender are handled by provided controllers.
  */
 export class MockServer {
     constructor(

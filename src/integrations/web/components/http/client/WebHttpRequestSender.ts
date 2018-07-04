@@ -1,15 +1,13 @@
 import {Request as AbstractRequest} from '../../../../../components/http/abstractions/Request'
 import {Response as AbstractResponse} from '../../../../../components/http/abstractions/Response'
 import {ResponseBody} from '../../../../../components/http'
-import {BaseHttpClient} from '../../../../../components/http/client/BaseHttpClient'
+import {HttpRequestSender} from '../../../../../components/http/client/HttpRequestSender'
 
-export class WebHttpClient extends BaseHttpClient {
+export class WebHttpRequestSender implements HttpRequestSender {
 
     constructor(
         private baseRequest: AbstractRequest = new AbstractRequest(),
-    ) {
-        super()
-    }
+    ) {}
 
     async sendRequest(request: AbstractRequest): Promise<AbstractResponse> {
         if (navigator && navigator.onLine === false) {

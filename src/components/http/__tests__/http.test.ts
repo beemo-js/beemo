@@ -1,4 +1,4 @@
-import {MockHttpClient} from '../client/MockHttpClient'
+import {MockHttpRequestSender} from '../client/MockHttpRequestSender'
 import {Request} from '../abstractions/Request'
 import {BatchRequestsQueue} from '../queue/BatchRequestsQueue'
 import {MappedField} from '../../serialization/annotations/annotations'
@@ -14,6 +14,7 @@ import {JsonEncoder} from '../../serialization/encoders/JsonEncoder'
 import {SerializationServiceName} from '../../../framework/services'
 import {ResponseBuilder} from '../abstractions/ResponseBuilder'
 import {RequestBuilder} from '../abstractions/RequestBuilder'
+import {HttpClient} from '..'
 
 initContainer()
 
@@ -38,10 +39,12 @@ const mockServer = new MockServer([
     }
 ])
 
-const httpClient = new MockHttpClient(
+const httpRequestSender = new MockHttpRequestSender(
     mockServer,
     new Request('https://myDomain.com/api/')
 )
+
+const httpClient = new HttpClient(httpRequestSender)
 
 const requestsQueue = new BatchRequestsQueue(httpClient, false)
 const callHttpClient = new CallHttpClient(httpClient, new JsonEncoder(), container.get(SerializationServiceName.Normalizer))
