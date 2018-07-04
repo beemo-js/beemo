@@ -77,6 +77,12 @@ test('http client', async () => {
     expect(response.body.json()['name']).toBe('bob')
 })
 
+test('multiple requests', async () => {
+    const responses = await httpClient.sendRequests([request, request])
+    expect(responses[0].body.json()['name']).toBe('bob')
+    expect(responses[1].body.json()['name']).toBe('bob')
+})
+
 // test('batch http client', async () => {
 //     const responses = await batchHttpClient.sendRequests([request, request])
 //     expect(responses).toHaveLength(2)

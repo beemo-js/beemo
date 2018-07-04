@@ -1,12 +1,15 @@
-import {HttpClient} from '../../../../../components/http/client/HttpClient'
 import {Request as AbstractRequest} from '../../../../../components/http/abstractions/Request'
 import {Response as AbstractResponse} from '../../../../../components/http/abstractions/Response'
+import {ResponseBody} from '../../../../../components/http'
+import {BaseHttpClient} from '../../../../../components/http/client/BaseHttpClient'
 
-export class WebHttpClient implements HttpClient {
+export class WebHttpClient extends BaseHttpClient {
 
     constructor(
         private baseRequest: AbstractRequest = new AbstractRequest(),
-    ) {}
+    ) {
+        super()
+    }
 
     async sendRequest(request: AbstractRequest): Promise<AbstractResponse> {
         if (navigator && navigator.onLine === false) {
@@ -22,7 +25,7 @@ export class WebHttpClient implements HttpClient {
         return new Request(request.getFinalUrl(), {
             method: request.method,
             headers: request.headers,
-            body: request.body
+            body: request.body.build()
         })
     }
 
@@ -30,9 +33,11 @@ export class WebHttpClient implements HttpClient {
         const headers = {}
         response.headers.forEach((key, value) => { headers[key] = value })
 
-        return new AbstractResponse(response.status, await response.text(), {
-            statusMessage: response.statusText,
-            headers: headers
-        })
+        return new AbstractResponse(
+            response.status,
+            new ResponseBody(await response.text()),
+            response.statusText,
+            headers
+        )
     }
 }

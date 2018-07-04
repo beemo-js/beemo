@@ -6,4 +6,6 @@ import {Response} from '../abstractions/Response'
  */
 export interface HttpClient {
     sendRequest(request: Request): Promise<Response>
+
+    sendRequests(requests: Request[]): Promise<Response[]>
 }
