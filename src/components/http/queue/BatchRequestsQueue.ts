@@ -1,18 +1,17 @@
-import {BatchHttpClient} from '../batch/BatchHttpClient'
 import {RequestsQueue} from './RequestsQueue'
 import {Request} from '../abstractions/Request'
+import {HttpClient} from '..'
 
 /**
- * Sends queued requests when network is available in a batch request.
+ * Sends queued requests when network is available in parallel.
  */
 export class BatchRequestsQueue implements RequestsQueue {
 
     private requests: Request[] = []
 
     constructor(
-        private batchHttpClient: BatchHttpClient,
+        private httpClient: HttpClient,
         private syncServiceWorkerEnabled: boolean,
-        private batchRequest: Request = new Request()
     ) {}
 
     queueRequest(request: Request): void {
@@ -27,7 +26,7 @@ export class BatchRequestsQueue implements RequestsQueue {
     async sendRequests(): Promise<boolean> {
         const requestsToSend = this.requests.splice(0)
         try {
-            await this.batchHttpClient.sendRequests(requestsToSend, this.batchRequest)
+            await this.httpClient.sendRequests(requestsToSend)
             return true
         } catch (e) {
             console.log(e)

@@ -1,5 +1,4 @@
 import {Call} from './Call'
-import {BatchHttpClient} from '../batch/BatchHttpClient'
 import {HttpClient} from '../client/HttpClient'
 import {Normalizer} from "../../serialization/Normalizer";
 import {Encoder} from "../../serialization/encoders/Encoder";
@@ -11,7 +10,6 @@ import {Response} from "../abstractions/Response";
 export class CallHttpClient {
     constructor(
         private httpClient: HttpClient,
-        private batchHttpClient: BatchHttpClient,
         private encoder: Encoder,
         private normalizer: Normalizer
     ) {}
@@ -44,7 +42,7 @@ export class CallHttpClient {
             .map((rd, index) => [rd, index])
             .filter(([rd]) => !(rd as Call<any>).retrieved)
 
-        const responses = await this.batchHttpClient.sendRequests(requestsToSend.map(([rd]) => (rd as Call<any>).request))
+        const responses = await this.httpClient.sendRequests(requestsToSend.map(([rd]) => (rd as Call<any>).request))
         responses.forEach(async (resp, index) => {
             const id = requestsToSend[index][1] as number
             this.parseCallResponseData(calls[id], resp)

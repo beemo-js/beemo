@@ -23,7 +23,6 @@ import {ReflectionServiceManager} from '../components/di/ReflectionServiceManage
 import {EventBus} from '../components/events/EventBus'
 import {CallAnnotationsHandler} from '../components/http/factory/call/CallAnnotationsHandler'
 import {CallHttpClient} from '../components/http/call/CallHttpClient'
-import {BatchRequestsQueue} from '../components/http/queue/BatchRequestsQueue'
 import {ConsoleLogger} from '../components/logging/logger/ConsoleLogger'
 import {LoggingBag} from '../components/logging/LoggingBag'
 import {LogsOrchestrationWorker} from '../components/logging/orchestration/LogsOrchestrationWorker'
@@ -38,7 +37,8 @@ import {BackgroundLoop} from '../components/threads/loop/BackgroundLoop'
 import {ReflectionClassTypesStore} from '../components/types/ReflectionClassTypesStore'
 import {ClassTypesStore} from '../components/types/ClassTypesStore'
 import {Validator} from '../components/validation/Validator'
-import {NoBatchHttpClient, RequestBuilder} from '../components/http'
+import {RequestBuilder} from '../components/http'
+import {BatchRequestsQueue} from '../components/http/queue/BatchRequestsQueue'
 
 let containerInitialized = false
 
@@ -86,13 +86,11 @@ export function initContainer(): boolean {
     ))
     container.set(HttpServiceName.CallHttpClient, () => new CallHttpClient(
         container.get(HttpServiceName.HttpClient),
-        container.get(HttpServiceName.BatchHttpClient),
         container.get(SerializationServiceName.Encoder),
         container.get(SerializationServiceName.Normalizer)
     ))
-    container.set(HttpServiceName.BatchHttpClient, () => new NoBatchHttpClient(container.get(HttpServiceName.HttpClient)))
     container.set(HttpServiceName.RequestsQueue, () => new BatchRequestsQueue(
-        container.get(HttpServiceName.BatchHttpClient),
+        container.get(HttpServiceName.HttpClient),
         false
     ))
 

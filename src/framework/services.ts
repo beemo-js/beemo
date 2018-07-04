@@ -24,7 +24,6 @@ export enum EventsServiceName {
 }
 
 export enum HttpServiceName {
-    BatchHttpClient = 'http/BatchHttpClient',
     CallHttpClient = 'http/CallHttpClient',
     HttpClient = 'http/HttpClient',
     CallAnnotationsHandler = 'http/CallAnnotationsHandler',

@@ -14,7 +14,6 @@ import {JsonEncoder} from '../../serialization/encoders/JsonEncoder'
 import {SerializationServiceName} from '../../../framework/services'
 import {ResponseBuilder} from '../abstractions/ResponseBuilder'
 import {RequestBuilder} from '../abstractions/RequestBuilder'
-import {NoBatchHttpClient} from '..'
 
 initContainer()
 
@@ -39,31 +38,13 @@ const mockServer = new MockServer([
     }
 ])
 
-// mockServer.routes.push({
-//     pattern: 'https://myDomain.com/api/batch',
-//     controller: request => {
-//         const requests = request.body.objectData['requests'] as {method: string, url: string, headers: {[key: string]: string}, body: string}[]
-//         const responses = requests.map(req => mockServer.request(
-//             new RequestBuilder()
-//                 .url(req.url)
-//                 .method(req.method)
-//                 .headers(req.headers)
-//                 .body(req.body)
-//                 .build()
-//         ))
-//
-//         return new ResponseBuilder().status(200).body(JSON.stringify({ responses })).build()
-//     }
-// })
-
 const httpClient = new MockHttpClient(
     mockServer,
     new Request('https://myDomain.com/api/')
 )
 
-const batchHttpClient = new NoBatchHttpClient(httpClient)
-const requestsQueue = new BatchRequestsQueue(batchHttpClient, false)
-const callHttpClient = new CallHttpClient(httpClient, batchHttpClient, new JsonEncoder(), container.get(SerializationServiceName.Normalizer))
+const requestsQueue = new BatchRequestsQueue(httpClient, false)
+const callHttpClient = new CallHttpClient(httpClient, new JsonEncoder(), container.get(SerializationServiceName.Normalizer))
 
 const request = new RequestBuilder()
     .url('/users/21')
@@ -82,11 +63,6 @@ test('multiple requests', async () => {
     expect(responses[0].body.json()['name']).toBe('bob')
     expect(responses[1].body.json()['name']).toBe('bob')
 })
-
-// test('batch http client', async () => {
-//     const responses = await batchHttpClient.sendRequests([request, request])
-//     expect(responses).toHaveLength(2)
-// })
 
 test('requests queue', async () => {
     await requestsQueue.queueRequest(request)
