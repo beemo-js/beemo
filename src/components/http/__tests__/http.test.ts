@@ -67,6 +67,21 @@ test('multiple requests', async () => {
     expect(responses[1].body.json()['name']).toBe('bob')
 })
 
+test('interceptors', async () => {
+    const httpClientWithInterceptors = new HttpClient(httpRequestSender)
+    let changed = false
+    httpClientWithInterceptors.useInterceptor(async (next, request) => {
+        changed = true
+        const response = await next(request)
+        response.status = 202
+        return response
+    })
+
+    const response = await httpClientWithInterceptors.sendRequest(request)
+    expect(changed).toBe(true)
+    expect(response.status).toBe(202)
+})
+
 test('requests queue', async () => {
     await requestsQueue.queueRequest(request)
     const sent = await requestsQueue.sendRequests()
