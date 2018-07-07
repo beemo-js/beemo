@@ -31,6 +31,8 @@ export class Response {
     static merge(...responses: Response[]): Response {
         const result = new Response(null, null)
         return responses.reduce((base, response) => {
+            if (!response) return base
+
             base.status = response.status || base.status
             base.body = ResponseBody.merge(base.body, response.body)
             base.statusMessage = response.statusMessage || base.statusMessage

@@ -36,6 +36,8 @@ export class Request {
     static merge(...requests: Request[]): Request {
         const result = new Request()
         return requests.reduce((base, request) => {
+            if (!request) return base
+
             base.url = Request.mergeUrls(base.url, request.url)
             base.method = request.method || base.method
             Object.assign(base.urlParameters, request.urlParameters)

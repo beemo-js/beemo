@@ -96,7 +96,7 @@ test('Entity Client', async () => {
 
     class UserClient extends CallFactory {
         constructor() {
-            super(User, new Request('/users'))
+            super(Call.fromRequest(new Request('/users'), User))
         }
 
         @HandledCall()
