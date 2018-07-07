@@ -23,13 +23,25 @@ export class BatchRequestsQueue implements RequestsQueue {
         return this.sendRequests()
     }
 
+    async send(request: Request): Promise<boolean> {
+        try {
+            await this.httpClient.sendRequest(request)
+            return true
+        } catch (e) {
+            // If sync service worker is enabled, let it sync in background
+            if (!this.syncServiceWorkerEnabled) {
+                this.requests.push(request)
+            }
+            return false
+        }
+    }
+
     async sendRequests(): Promise<boolean> {
         const requestsToSend = this.requests.splice(0)
         try {
             await this.httpClient.sendRequests(requestsToSend)
             return true
         } catch (e) {
-            console.log(e)
             // If sync service worker is enabled, let it sync in background
             if (!this.syncServiceWorkerEnabled) {
                 this.requests = this.requests.concat(requestsToSend)

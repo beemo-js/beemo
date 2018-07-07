@@ -15,6 +15,11 @@ export interface RequestsQueue {
     queueAndSend(request: Request): Promise<boolean>
 
     /**
+     * Send request, and queue it if it failed.
+     */
+    send(request: Request): Promise<boolean>
+
+    /**
      * Returns true if requests could be sent immediately.
      */
     sendRequests(): Promise<boolean>
