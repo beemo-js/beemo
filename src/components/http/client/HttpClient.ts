@@ -1,8 +1,7 @@
 import {Request} from '../abstractions/Request'
 import {Response} from '../abstractions/Response'
 import {HttpRequestSender} from './HttpRequestSender'
-
-type Interceptor = (next: (req: Request) => Promise<Response>, request: Request) => Promise<Response>
+import {Interceptor} from './interceptors'
 
 export class HttpClient {
     /**
@@ -17,7 +16,6 @@ export class HttpClient {
     async sendRequest(request: Request): Promise<Response> {
         const interceptors = this.interceptors
         interceptors.push(async (next, request) => this.requestSender.sendRequest(request))
-        const send = async req => await this.requestSender.sendRequest(req)
         let interceptorIndex = 1
         const next = async req => await interceptors[interceptorIndex++](next, req)
         return await interceptors[0](next, request)
