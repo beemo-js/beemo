@@ -17,12 +17,12 @@ export abstract class KVEntityStore<E extends Entity<Id>, Id> implements EntityS
         return this.basePath + this.pathSeparator + this.idToStringMapper(id)
     }
 
-    async all(): Promise<E[]> {
-        return await this.kvStore.all<E>()
+    all(): Promise<E[]> {
+        return this.kvStore.all<E>()
     }
 
-    async findById(id: Id): Promise<E> {
-        return await this.kvStore.get<E>(this.entityPath(id))
+    findById(id: Id): Promise<E> {
+        return this.kvStore.get<E>(this.entityPath(id))
     }
 
     async save(entity: E|E[]): Promise<boolean> {
@@ -31,14 +31,14 @@ export abstract class KVEntityStore<E extends Entity<Id>, Id> implements EntityS
             return true
         }
 
-        return await this.kvStore.set(this.entityPath(entity.id), entity)
+        return this.kvStore.set(this.entityPath(entity.id), entity)
     }
 
-    async existsById(id: Id): Promise<boolean> {
-        return await this.kvStore.has(this.entityPath(id))
+    existsById(id: Id): Promise<boolean> {
+        return this.kvStore.has(this.entityPath(id))
     }
 
-    async deleteById(id: Id): Promise<boolean> {
-        return await this.kvStore.delete(this.entityPath(id))
+    deleteById(id: Id): Promise<boolean> {
+        return this.kvStore.delete(this.entityPath(id))
     }
 }

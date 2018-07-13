@@ -30,9 +30,10 @@ export class MockServer {
         const resource = this.findRoute(request.getFinalUrl())
 
         if (!resource) {
-            return await new ResponseBuilder().status(404).body(JSON.stringify({ message: 'Not Found' })).build()
+            return new ResponseBuilder().status(404).body(JSON.stringify({ message: 'Not Found' })).build()
         }
 
+        // sleep
         await new Promise(resolve => setTimeout(resolve, this.latency))
 
         return resource.controller(request)

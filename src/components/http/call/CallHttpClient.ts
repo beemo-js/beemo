@@ -14,11 +14,11 @@ export class CallHttpClient {
         private normalizer: Normalizer
     ) {}
 
-    async retrieveData(call: Call<any>|Call<any>[]|Object): Promise<any|any[]|Object> {
+    retrieveData(call: Call<any>|Call<any>[]|Object): Promise<any|any[]|Object> {
         return (
             call instanceof Call ? this.retrieveCallData(call):
-            Array.isArray(call) ? await this.retrieveDataArray(call):
-            await this.retrieveDataObject(call)
+            Array.isArray(call) ? this.retrieveDataArray(call):
+            this.retrieveDataObject(call)
         )
     }
 

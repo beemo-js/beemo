@@ -14,8 +14,8 @@ export class MockHttpRequestSender implements HttpRequestSender {
         private baseRequest: Request = new Request()
     ) {}
 
-    async sendRequest(request: Request): Promise<Response> {
+    sendRequest(request: Request): Promise<Response> {
         const finalRequest = Request.merge(this.baseRequest, request)
-        return await this.mockServer.request(finalRequest)
+        return this.mockServer.request(finalRequest)
     }
 }

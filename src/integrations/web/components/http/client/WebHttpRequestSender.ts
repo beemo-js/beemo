@@ -16,7 +16,7 @@ export class WebHttpRequestSender implements HttpRequestSender {
 
         const finalRequest = this.mapRequest(AbstractRequest.merge(this.baseRequest, request))
 
-        return await this.mapResponse(await fetch(finalRequest))
+        return this.mapResponse(await fetch(finalRequest))
     }
 
     private mapRequest(request: AbstractRequest): Request {

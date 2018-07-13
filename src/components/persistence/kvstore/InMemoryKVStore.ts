@@ -8,12 +8,12 @@ export class InMemoryKVStore implements KVStore {
         return Promise.all(result)
     }
 
-    async get<T>(key: string): Promise<T> {
-        return await this.store.get(key) as T;
+    get<T>(key: string): Promise<T> {
+        return this.store.get(key);
     }
 
     async has<T>(key: string): Promise<boolean> {
-        return await this.store.has(key);
+        return this.store.has(key);
     }
 
     async set<T>(key: string, value: T): Promise<boolean> {
