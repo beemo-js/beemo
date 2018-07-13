@@ -1,5 +1,4 @@
-import {Request} from '../abstractions/Request'
-import {Response} from '../abstractions/Response'
+import {Request, Response} from '..'
 
 export interface HttpRequestSender {
     sendRequest(request: Request): Promise<Response>

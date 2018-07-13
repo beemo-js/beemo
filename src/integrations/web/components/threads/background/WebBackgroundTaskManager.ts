@@ -1,4 +1,4 @@
-import {BackgroundTaskManager} from '../../../../../components/threads/background/BackgroundTaskManager'
+import {BackgroundTaskManager} from '../../../../../components/threads'
 
 export class WebBackgroundTaskManager implements BackgroundTaskManager {
     executeInBackground(fn: Function): void {

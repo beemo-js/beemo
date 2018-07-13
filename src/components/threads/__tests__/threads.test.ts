@@ -1,9 +1,5 @@
-import {BackgroundTaskManager} from '../background/BackgroundTaskManager'
-import {BackgroundLoop} from '../loop/BackgroundLoop'
-import {BackgroundTask} from '../background/annotations/BackgroundTask'
-import {container} from '../../../framework/globalContainer'
-import {ThreadsServiceName} from '../../../framework/services'
-import {initContainer} from '../../../framework/initContainer'
+import {BackgroundTaskManager, BackgroundLoop, BackgroundTask} from '..'
+import {container, ThreadsServiceName, initContainer} from '../../../framework'
 
 initContainer()
 

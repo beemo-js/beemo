@@ -1,6 +1,4 @@
-import {Response} from '../abstractions/Response'
-import {Request} from '../abstractions/Request'
-import {MockServer} from '../server/MockServer'
+import {Response, Request, MockServer} from '..'
 import {HttpRequestSender} from './HttpRequestSender'
 
 /**

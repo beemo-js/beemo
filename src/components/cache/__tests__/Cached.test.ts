@@ -1,5 +1,5 @@
-import {Cached} from '../annotations/Cached'
-import {initContainer} from '../../../framework/initContainer'
+import {Cached} from '..'
+import {initContainer} from '../../../framework'
 
 initContainer()
 

@@ -1,8 +1,7 @@
 import {Container} from './Container'
-import {ClassAnnotationsStore} from '../annotations/ClassAnnotationsStore'
-import {ReflectionClassTypesStore} from '../types/ReflectionClassTypesStore'
-import {primitiveTypes} from '../types/primitiveTypes'
-import {ConfigurationStore} from '../config/ConfigurationStore'
+import {ClassAnnotationsStore} from '../annotations'
+import {ReflectionClassTypesStore, primitiveTypes} from '../types'
+import {ConfigurationStore} from '../config'
 import {FromConfig, Inject, Service} from './annotations/annotations'
 
 /**

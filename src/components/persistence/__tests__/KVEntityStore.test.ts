@@ -1,8 +1,4 @@
-import {InMemoryKVStore} from '../kvstore/InMemoryKVStore'
-import {Entity} from '../entity/Entity'
-import {KVEntityStore} from '../entity/KVEntityStore'
-import {KVStore} from '../kvstore/KVStore'
-
+import {InMemoryKVStore, Entity, KVEntityStore, KVStore} from '..'
 
 test('KVEntityStore', async () => {
     class User implements Entity<number> {

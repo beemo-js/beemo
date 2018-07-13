@@ -1,5 +1,5 @@
 import {Normalizer} from '../Normalizer'
-import {Encoder} from '../encoders/Encoder'
+import {Encoder} from '..'
 import {Serializer} from './Serializer'
 
 export class ComposableSerializer implements Serializer {

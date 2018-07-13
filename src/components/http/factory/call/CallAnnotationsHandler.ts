@@ -1,7 +1,5 @@
-import {ClassAnnotationsStore} from '../../../annotations/ClassAnnotationsStore'
-import {Call} from '../../call/Call'
-import {Body, Header, UrlParam} from '../../annotations/call_factory'
-import {RequestBody} from '../../abstractions/RequestBody'
+import {ClassAnnotationsStore} from '../../../annotations'
+import {Call, Body, Header, UrlParam, RequestBody} from '../..'
 import {Normalizer} from '../../../serialization'
 
 /**

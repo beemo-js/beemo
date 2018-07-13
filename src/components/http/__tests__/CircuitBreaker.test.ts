@@ -1,4 +1,4 @@
-import {CircuitBreaker} from '../interceptors/CircuitBreaker'
+import {CircuitBreaker} from '..'
 
 test('Circuit Breaker', () => {
     const circuitBreaker = new CircuitBreaker(2, 2, 500)

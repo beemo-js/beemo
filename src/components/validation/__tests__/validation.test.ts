@@ -1,10 +1,7 @@
 import {Validator} from '../Validator'
 import {registerValidators} from '../validators'
-import {container} from '../../../framework/globalContainer'
-import {ValidatedParameters} from '../annotations/ValidatedParameters'
-import {ValidationServiceName} from '../../../framework/services'
-import {initContainer} from '../../../framework/initContainer'
-import {Min, Typed, Valid} from '../annotations/constraints'
+import {container, ValidationServiceName, initContainer} from '../../../framework'
+import {ValidatedParameters, Min, Typed, Valid} from '..'
 import {min} from '../builders'
 
 initContainer()

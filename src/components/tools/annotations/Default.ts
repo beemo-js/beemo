@@ -1,4 +1,4 @@
-import {aopAnnotation} from '../../annotations/aop'
+import {aopAnnotation} from '../../annotations'
 
 /**
  * If returned value is null, return default one instead.

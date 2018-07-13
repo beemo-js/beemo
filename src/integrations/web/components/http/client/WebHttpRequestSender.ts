@@ -1,7 +1,9 @@
-import {Request as AbstractRequest} from '../../../../../components/http/abstractions/Request'
-import {Response as AbstractResponse} from '../../../../../components/http/abstractions/Response'
-import {ResponseBody} from '../../../../../components/http'
-import {HttpRequestSender} from '../../../../../components/http/client/HttpRequestSender'
+import {
+    HttpRequestSender,
+    Request as AbstractRequest,
+    Response as AbstractResponse,
+    ResponseBody
+} from '../../../../../components/http'
 
 export class WebHttpRequestSender implements HttpRequestSender {
 

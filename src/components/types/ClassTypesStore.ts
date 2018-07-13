@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import {ClassMetadataStore} from '../metadata/ClassMetadataStore'
+import {ClassMetadataStore} from '../metadata'
 
 export class ClassTypesStore {
 

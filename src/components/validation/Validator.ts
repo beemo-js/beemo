@@ -1,5 +1,5 @@
 import {ValidatorType, ValidatorData, ValidatorError} from './types'
-import {ClassAnnotationsStore} from '../annotations/ClassAnnotationsStore'
+import {ClassAnnotationsStore} from '../annotations'
 import {Constraints as ValidatorAnnotation} from './annotations/constraints'
 
 export class Validator {

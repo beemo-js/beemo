@@ -1,4 +1,4 @@
-import {Request} from '../abstractions/Request'
+import {Request} from '..'
 
 /**
  * Requests queue; requests are pushed in it, waiting to be sent by a worker.

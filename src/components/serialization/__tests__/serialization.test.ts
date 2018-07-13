@@ -1,10 +1,5 @@
-import {Normalizer} from '../Normalizer'
-import {ClassMapper} from '../ClassMapper'
-import {container} from '../../../framework/globalContainer'
-import {MappedField} from '../annotations/annotations'
-import {SerializationServiceName} from '../../../framework/services'
-import {initContainer} from '../../../framework/initContainer'
-import {Serializer} from '../serializers/Serializer'
+import {Normalizer, ClassMapper, MappedField, Serializer} from '..'
+import {container, SerializationServiceName, initContainer} from '../../../framework'
 
 initContainer()
 

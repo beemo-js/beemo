@@ -1,4 +1,4 @@
-import {KVStore} from '../persistence/kvstore/KVStore'
+import {KVStore} from '../persistence'
 
 /**
  * Interface for caching.

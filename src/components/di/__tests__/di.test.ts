@@ -1,8 +1,6 @@
-import {FromConfig, Inject, Service} from '../annotations/annotations'
-import {container} from '../../../framework/globalContainer'
-import {initContainer} from '../../../framework/initContainer'
-import {ConfigServiceName} from '../../../framework/services'
-import {ConfigurationStore} from '../../config/ConfigurationStore'
+import {FromConfig, Inject, Service} from '..'
+import {container, initContainer, ConfigServiceName} from '../../../framework'
+import {ConfigurationStore} from '../../config'
 
 initContainer()
 

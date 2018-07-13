@@ -1,6 +1,5 @@
 import {RequestsQueue} from './RequestsQueue'
-import {Request} from '../abstractions/Request'
-import {HttpClient} from '..'
+import {Request, HttpClient} from '..'
 
 /**
  * Sends queued requests when network is available in parallel.

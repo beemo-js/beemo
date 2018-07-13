@@ -1,4 +1,4 @@
-import {ClassMetadataStore} from '../metadata/ClassMetadataStore'
+import {ClassMetadataStore} from '../metadata'
 
 interface AnnotationData {
     type: Function // Type of annotation

@@ -1,8 +1,7 @@
 import {Permission} from '../Permission'
-import {aopAnnotation} from '../../annotations/aop'
-import {container} from '../../../framework/globalContainer'
-import {PermissionsRequester} from '../requester/PermissionsRequester'
-import {PermissionsServiceName} from '../../../framework/services'
+import {aopAnnotation} from '../../annotations'
+import {container, PermissionsServiceName} from '../../../framework'
+import {PermissionsRequester} from '..'
 
 /**
  * Annotated method requires given permission.

@@ -1,4 +1,4 @@
-import {ConfigurationStore} from './ConfigurationStore'
+import {ConfigurationStore} from '.'
 
 /**
  * Configuration store that get values from stacked configuration stores.

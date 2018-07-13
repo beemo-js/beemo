@@ -1,6 +1,5 @@
 import {LogsOrchestrator} from './LogsOrchestrator'
-import {Request} from '../../http/abstractions/Request'
-import {RequestsQueue} from '../../http/queue/RequestsQueue'
+import {Request, RequestsQueue} from '../../http'
 
 /**
  * Puts logs to requests queue. Logs can thus be sent to server.

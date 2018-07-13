@@ -1,9 +1,8 @@
-import {container} from '../../../framework/globalContainer'
-import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
-import {ClassMetadataStore} from '../../metadata/ClassMetadataStore'
+import {container, AnnotationsServiceName, MetadataServiceName} from '../../../framework'
+import {ClassAnnotationsStore} from '../../annotations'
+import {ClassMetadataStore} from '../../metadata'
 import {MappedFieldConfiguration} from '../types'
 import {Normalizer} from '../Normalizer'
-import {AnnotationsServiceName, MetadataServiceName} from '../../../framework/services'
 
 function fillInversedFieldsByGroup(inversedMappedFields: Object, propertyKey: string, config: MappedFieldConfiguration): void {
     for (let group in config) {

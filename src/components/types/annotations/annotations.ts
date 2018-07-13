@@ -1,7 +1,6 @@
-import {container} from '../../../framework/globalContainer'
-import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
+import {container, AnnotationsServiceName, TypesServiceName} from '../../../framework'
+import {ClassAnnotationsStore} from '../../annotations'
 import {ClassTypesStore} from '../ClassTypesStore'
-import {AnnotationsServiceName, TypesServiceName} from '../../../framework/services'
 
 // Returns a validator annotation (parameter or property decorator)
 function typeAnnotation(type: Function): any {

@@ -15,30 +15,26 @@ import {
     TypesServiceName,
     ValidationServiceName
 } from './services'
-import {ClassAnnotationsStore} from '../components/annotations/ClassAnnotationsStore'
-import {Cache} from '../components/cache/Cache'
-import {InMemoryConfigurationStore} from '../components/config/InMemoryConfigurationStore'
-import {Converter} from '../components/conversion/Converter'
-import {ReflectionServiceManager} from '../components/di/ReflectionServiceManager'
-import {EventBus} from '../components/events/EventBus'
-import {CallAnnotationsHandler} from '../components/http/factory/call/CallAnnotationsHandler'
-import {CallHttpClient} from '../components/http/call/CallHttpClient'
-import {ConsoleLogger} from '../components/logging/logger/ConsoleLogger'
-import {LoggingBag} from '../components/logging/LoggingBag'
-import {LogsOrchestrationWorker} from '../components/logging/orchestration/LogsOrchestrationWorker'
-import {HttpLogsOrchestrator} from '../components/logging/orchestration/HttpLogsOrchestrator'
-import {ClassMetadataStore} from '../components/metadata/ClassMetadataStore'
-import {InMemoryKVStore} from '../components/persistence/kvstore/InMemoryKVStore'
-import {ComposableSerializer} from '../components/serialization/serializers/ComposableSerializer'
-import {JsonEncoder} from '../components/serialization/encoders/JsonEncoder'
-import {ClassMapper} from '../components/serialization/ClassMapper'
-import {Normalizer} from '../components/serialization/Normalizer'
-import {BackgroundLoop} from '../components/threads/loop/BackgroundLoop'
-import {ReflectionClassTypesStore} from '../components/types/ReflectionClassTypesStore'
-import {ClassTypesStore} from '../components/types/ClassTypesStore'
-import {Validator} from '../components/validation/Validator'
-import {CircuitBreaker, RequestBuilder} from '../components/http'
-import {BatchRequestsQueue} from '../components/http/queue/BatchRequestsQueue'
+import {ClassAnnotationsStore} from '../components/annotations'
+import {Cache} from '../components/cache'
+import {InMemoryConfigurationStore} from '../components/config'
+import {Converter} from '../components/conversion'
+import {ReflectionServiceManager} from '../components/di'
+import {EventBus} from '../components/events'
+import {
+    BatchRequestsQueue,
+    CallAnnotationsHandler,
+    CallHttpClient,
+    CircuitBreaker,
+    RequestBuilder
+} from '../components/http'
+import {ConsoleLogger, HttpLogsOrchestrator, LoggingBag, LogsOrchestrationWorker} from '../components/logging'
+import {ClassMetadataStore} from '../components/metadata'
+import {InMemoryKVStore} from '../components/persistence'
+import {ClassMapper, ComposableSerializer, JsonEncoder, Normalizer} from '../components/serialization'
+import {BackgroundLoop} from '../components/threads'
+import {ClassTypesStore, ReflectionClassTypesStore} from '../components/types'
+import {Validator} from '../components/validation'
 
 let containerInitialized = false
 

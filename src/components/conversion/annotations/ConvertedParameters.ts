@@ -1,10 +1,6 @@
-import {ConverterData} from '../types'
-import {applyMiddleware} from '../../annotations/aop'
-import {container} from '../../../framework/globalContainer'
-import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
-import {Converter} from '../Converter'
-import {Convert as ConverterAnnotation} from './converters'
-import {AnnotationsServiceName, ConversionServiceName} from '../../../framework/services'
+import {ConverterData, Converter, Convert as ConverterAnnotation} from '..'
+import {applyMiddleware, ClassAnnotationsStore} from '../../annotations'
+import {container, AnnotationsServiceName, ConversionServiceName} from '../../../framework'
 
 /**
  * Converts method parameters.

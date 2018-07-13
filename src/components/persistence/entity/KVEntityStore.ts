@@ -1,4 +1,4 @@
-import {KVStore} from '../kvstore/KVStore'
+import {KVStore} from '..'
 import {Entity} from './Entity'
 import {EntityStore} from './EntityStore'
 

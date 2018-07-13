@@ -1,6 +1,4 @@
-import {Request} from '../abstractions/Request'
-import {Response} from '../abstractions/Response'
-import {ResponseBuilder} from '../abstractions/ResponseBuilder'
+import {Request, Response, ResponseBuilder} from '..'
 
 /**
  * Map of a route to a controller.

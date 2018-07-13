@@ -1,5 +1,4 @@
-import {InMemoryConfigurationStore} from '../InMemoryConfigurationStore'
-import {StackableConfigurationStore} from '../StackableConfigurationStore'
+import {InMemoryConfigurationStore, StackableConfigurationStore} from '..'
 
 test('StackableConfiguration', () => {
     const config = new InMemoryConfigurationStore({

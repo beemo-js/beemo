@@ -1,5 +1,5 @@
 import {RequestsQueue} from './RequestsQueue'
-import {BackgroundLoop} from '../../threads/loop/BackgroundLoop'
+import {BackgroundLoop} from '../../threads'
 
 export function registerQueue(
     requestsQueue: RequestsQueue,

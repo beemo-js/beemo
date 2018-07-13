@@ -1,15 +1,17 @@
-import {WebHttpRequestSender} from '../components/http/client/WebHttpRequestSender'
 import {
+    WebBackgroundTaskManager,
+    WebHttpRequestSender,
+    WebLogDataFormatter,
+    WebPermissionsRequester
+} from '../components'
+import {
+    container,
     HttpServiceName,
+    initContainer,
     LoggingServiceName,
     PermissionsServiceName,
     ThreadsServiceName
-} from '../../../framework/services'
-import {container} from '../../../framework/globalContainer'
-import {WebLogDataFormatter} from '../components/logging/formatter/WebLogDataFormatter'
-import {WebPermissionsRequester} from '../components/permissions/requester/WebPermissionsRequester'
-import {WebBackgroundTaskManager} from '../components/threads/background/WebBackgroundTaskManager'
-import {initContainer} from '../../../framework'
+} from '../../../framework'
 
 let containerInitialized = false
 

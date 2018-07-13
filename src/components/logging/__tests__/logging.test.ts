@@ -1,6 +1,6 @@
 import {LoggingBag} from '../LoggingBag'
-import {WebLogDataFormatter} from '../../../integrations/web/components/logging/formatter/WebLogDataFormatter'
-import {BatchLogger} from '../logger/BatchLogger'
+import {WebLogDataFormatter} from '../../../integrations/web/components'
+import {BatchLogger} from '..'
 
 test('Logger', () => {
     const webLogDataFormatter = new WebLogDataFormatter()

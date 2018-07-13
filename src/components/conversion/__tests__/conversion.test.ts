@@ -1,10 +1,5 @@
-import {Converter} from '../Converter'
-import {registerConverters} from '../converters'
-import {ConvertedParameters} from '../annotations/ConvertedParameters'
-import {container} from '../../../framework/globalContainer'
-import {ConversionServiceName} from '../../../framework/services'
-import {initContainer} from '../../../framework/initContainer'
-import {DefaultTo, Reverse, Sort} from '../annotations/converters'
+import {Converter, registerConverters, ConvertedParameters, DefaultTo, Reverse, Sort} from '..'
+import {container, ConversionServiceName, initContainer} from '../../../framework'
 
 initContainer()
 registerConverters(container.get<Converter>(ConversionServiceName.Converter))

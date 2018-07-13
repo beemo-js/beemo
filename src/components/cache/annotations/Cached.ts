@@ -1,7 +1,6 @@
-import {aopAnnotation} from '../../annotations/aop'
-import {container} from '../../../framework/globalContainer'
-import {Cache} from '../Cache'
-import {CacheServiceName} from '../../../framework/services'
+import {aopAnnotation} from '../../annotations'
+import {container, CacheServiceName} from '../../../framework'
+import {Cache} from '..'
 
 /**
  * Cache the result of method call under the key returned by cacheKey.

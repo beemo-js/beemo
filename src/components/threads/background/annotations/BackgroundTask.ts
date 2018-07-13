@@ -1,7 +1,6 @@
-import {aopAnnotation} from '../../../annotations/aop'
-import {container} from '../../../../framework/globalContainer'
+import {aopAnnotation} from '../../../annotations'
+import {container, ThreadsServiceName} from '../../../../framework'
 import {BackgroundTaskManager} from '../BackgroundTaskManager'
-import {ThreadsServiceName} from '../../../../framework/services'
 
 /**
  * Execute given method in background.
