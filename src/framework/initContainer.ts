@@ -37,7 +37,7 @@ import {BackgroundLoop} from '../components/threads/loop/BackgroundLoop'
 import {ReflectionClassTypesStore} from '../components/types/ReflectionClassTypesStore'
 import {ClassTypesStore} from '../components/types/ClassTypesStore'
 import {Validator} from '../components/validation/Validator'
-import {RequestBuilder} from '../components/http'
+import {CircuitBreaker, RequestBuilder} from '../components/http'
 import {BatchRequestsQueue} from '../components/http/queue/BatchRequestsQueue'
 
 let containerInitialized = false
@@ -93,6 +93,7 @@ export function initContainer(): boolean {
         container.get(HttpServiceName.HttpClient),
         false
     ))
+    container.set(HttpServiceName.CircuitBreaker, () => new CircuitBreaker(4, 2, 1000))
 
     // Logging
 

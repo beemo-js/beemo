@@ -5,9 +5,9 @@ export class CircuitBreaker {
     private timeoutId: number
 
     constructor(
-        private failuresThreshold: number,
-        private successThreshold: number,
-        private openStateTimeout: number
+        public failuresThreshold: number,
+        public successThreshold: number,
+        public openStateTimeout: number
     ) {}
 
     attempt(fn: Function): any {

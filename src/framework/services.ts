@@ -27,7 +27,8 @@ export enum HttpServiceName {
     CallHttpClient = 'http/CallHttpClient',
     HttpClient = 'http/HttpClient',
     CallAnnotationsHandler = 'http/CallAnnotationsHandler',
-    RequestsQueue = 'http/RequestsQueue'
+    RequestsQueue = 'http/RequestsQueue',
+    CircuitBreaker = 'http/CircuitBreaker'
 }
 
 export enum LoggingServiceName {
@@ -39,8 +40,7 @@ export enum LoggingServiceName {
 }
 
 export enum MetadataServiceName {
-    ClassMetadataStore = 'metadata/ClassMetadataStore',
-    NameResolver = 'metadata/NameResolver'
+    ClassMetadataStore = 'metadata/ClassMetadataStore'
 }
 
 export enum MonadsServiceName {

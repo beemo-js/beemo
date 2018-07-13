@@ -1,5 +1,7 @@
 import {Request} from '../abstractions/Request'
 import {Response} from '../abstractions/Response'
+import {container, HttpServiceName} from '../../../framework'
+import {CircuitBreaker} from './CircuitBreaker'
 
 export type Interceptor = (next: (req: Request) => Promise<Response>, request: Request) => Promise<Response>
 
@@ -34,5 +36,12 @@ export function timeoutInterceptor(timeout: number = 5000): Interceptor {
         }
 
         return response as Response
+    }
+}
+
+export function circuitBreakerInterceptor(): Interceptor {
+    return (next: (req: Request) => Promise<Response>, request: Request) => {
+        const circuitBreaker = container.get<CircuitBreaker>(HttpServiceName.CircuitBreaker)
+        return circuitBreaker.attempt(() => next(request))
     }
 }

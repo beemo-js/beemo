@@ -14,7 +14,7 @@ import {JsonEncoder} from '../../serialization/encoders/JsonEncoder'
 import {SerializationServiceName} from '../../../framework/services'
 import {ResponseBuilder} from '../abstractions/ResponseBuilder'
 import {RequestBuilder} from '../abstractions/RequestBuilder'
-import {HttpClient, retryInterceptor, timeoutInterceptor} from '..'
+import {circuitBreakerInterceptor, HttpClient, retryInterceptor, timeoutInterceptor} from '..'
 
 initContainer()
 
@@ -45,6 +45,7 @@ const httpRequestSender = new MockHttpRequestSender(
 )
 
 const httpClient = new HttpClient(httpRequestSender)
+httpClient.useInterceptor(circuitBreakerInterceptor())
 httpClient.useInterceptor(retryInterceptor())
 httpClient.useInterceptor(timeoutInterceptor(500))
 
