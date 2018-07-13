@@ -14,11 +14,12 @@ export class HttpClient {
     ) {}
 
     async sendRequest(request: Request): Promise<Response> {
-        const interceptors = this.interceptors
-        interceptors.push(async (next, request) => this.requestSender.sendRequest(request))
-        let interceptorIndex = 1
-        const next = async req => await interceptors[interceptorIndex++](next, req)
-        return await interceptors[0](next, request)
+        const interceptors = this.interceptors.slice()
+        interceptors.push(async (next, request) => await this.requestSender.sendRequest(request))
+
+        let ii = 0
+        const nextFns = interceptors.map(() => (i => req => interceptors[i](nextFns[i], req))(++ii))
+        return await interceptors[0](nextFns[0], request)
     }
 
     async sendRequests(requests: Request[]): Promise<Response[]> {

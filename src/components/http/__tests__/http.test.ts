@@ -14,7 +14,7 @@ import {JsonEncoder} from '../../serialization/encoders/JsonEncoder'
 import {SerializationServiceName} from '../../../framework/services'
 import {ResponseBuilder} from '../abstractions/ResponseBuilder'
 import {RequestBuilder} from '../abstractions/RequestBuilder'
-import {HttpClient, retryInterceptor} from '..'
+import {HttpClient, retryInterceptor, timeoutInterceptor} from '..'
 
 initContainer()
 
@@ -37,7 +37,7 @@ const mockServer = new MockServer([
                 new ResponseBuilder().status(404).build()
         }
     }
-], 5)
+], 50)
 
 const httpRequestSender = new MockHttpRequestSender(
     mockServer,
@@ -45,9 +45,8 @@ const httpRequestSender = new MockHttpRequestSender(
 )
 
 const httpClient = new HttpClient(httpRequestSender)
-// httpClient.useInterceptor(timeoutInterceptor(50))
 httpClient.useInterceptor(retryInterceptor())
-httpClient.useInterceptor(retryInterceptor())
+httpClient.useInterceptor(timeoutInterceptor(500))
 
 const requestsQueue = new BatchRequestsQueue(httpClient, false)
 const callHttpClient = new CallHttpClient(httpClient, new JsonEncoder(), container.get(SerializationServiceName.Normalizer))
