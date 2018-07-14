@@ -1,4 +1,4 @@
-import {InMemoryConfigurationStore, StackableConfigurationStore} from '..'
+import {InMemoryConfigurationStore} from '..'
 
 test('StackableConfiguration', () => {
     const config = new InMemoryConfigurationStore({
@@ -13,16 +13,4 @@ test('StackableConfiguration', () => {
 
     config.set('a.f', 'g')
     expect(config.get('a.f')).toBe('g')
-
-    const stackableConfig = new StackableConfigurationStore([
-        new InMemoryConfigurationStore({
-            a: {
-                b: 'b'
-            }
-        }),
-        config
-    ])
-
-    expect(stackableConfig.get('a.b')).toBe('b')
-    expect(stackableConfig.get('d')).toBe('e')
 })
