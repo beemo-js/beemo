@@ -1,7 +1,6 @@
 import {container} from './globalContainer'
 import {
     AnnotationsServiceName,
-    CacheServiceName,
     ConfigServiceName,
     ConversionServiceName,
     DiServiceName,
@@ -16,7 +15,6 @@ import {
     ValidationServiceName
 } from './services'
 import {ClassAnnotationsStore} from '../components/annotations'
-import {Cache} from '../components/cache'
 import {InMemoryConfigurationStore} from '../components/config'
 import {Converter} from '../components/conversion'
 import {ReflectionServiceManager} from '../components/di'
@@ -47,10 +45,6 @@ export function initContainer(): boolean {
     // Annotations
 
     container.set(AnnotationsServiceName.ClassAnnotationsStore, () => new ClassAnnotationsStore(container.get(MetadataServiceName.ClassMetadataStore)))
-
-    // Cache
-
-    container.set(CacheServiceName.Cache, () => new Cache(container.get(PersistenceServiceName.KVStore)))
 
     // Config
 

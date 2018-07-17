@@ -2,10 +2,6 @@ export enum AnnotationsServiceName {
     ClassAnnotationsStore = 'annotations/ClassAnnotationsStore'
 }
 
-export enum CacheServiceName {
-    Cache = 'cache/Cache'
-}
-
 export enum ConfigServiceName {
     ConfigurationStore = 'config/ConfigurationStore'
 }
