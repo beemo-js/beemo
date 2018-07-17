@@ -1,15 +1,13 @@
 import {
     WebBackgroundTaskManager,
     WebHttpRequestSender,
-    WebLogDataFormatter,
-    WebPermissionsRequester
+    WebLogDataFormatter
 } from '../components'
 import {
     container,
     HttpServiceName,
     initContainer,
     LoggingServiceName,
-    PermissionsServiceName,
     ThreadsServiceName
 } from '../../../framework'
 
@@ -30,10 +28,6 @@ export function initWebContainer() {
     // Logging
 
     container.set(LoggingServiceName.LogDataFormatter, () => new WebLogDataFormatter())
-
-    // Permissions
-
-    container.set(PermissionsServiceName.PermissionsRequester, () => new WebPermissionsRequester())
 
     // Threads
 
