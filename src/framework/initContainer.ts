@@ -28,7 +28,6 @@ import {
 } from '../components/http'
 import {ConsoleLogger, HttpLogsOrchestrator, LoggingBag, LogsOrchestrationWorker} from '../components/logging'
 import {ClassMetadataStore} from '../components/metadata'
-import {InMemoryKVStore} from '../components/persistence'
 import {ClassMapper, ComposableSerializer, JsonEncoder, Normalizer} from '../components/serialization'
 import {BackgroundLoop} from '../components/threads'
 import {ClassTypesStore, ReflectionClassTypesStore} from '../components/types'

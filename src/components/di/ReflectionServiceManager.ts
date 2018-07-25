@@ -1,6 +1,6 @@
 import {Container} from './Container'
 import {ClassAnnotationsStore} from '../annotations'
-import {ReflectionClassTypesStore, primitiveTypes} from '../types'
+import {ReflectionClassTypesStore} from '../types'
 import {ConfigurationStore} from '../config'
 import {FromConfig, Inject, Service} from './annotations/annotations'
 
@@ -69,11 +69,6 @@ export class ReflectionServiceManager {
         const injectAnnotations = this.classAnnotationsStore.getConstructorParameterAnnotations(target, paramIndex, Inject)
         if (injectAnnotations.length > 0) {
             return this.container.get(injectAnnotations[0].data['id'])
-        }
-
-        // basic type without manual definition
-        if (primitiveTypes.indexOf(paramType) !== -1) {
-            throw `No definition exists in DI container for param #${paramIndex} of class ${target} constructor`
         }
 
         // get from arg type
