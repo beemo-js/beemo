@@ -33,6 +33,7 @@ import {ClassMapper, ComposableSerializer, JsonEncoder, Normalizer} from '../com
 import {BackgroundLoop} from '../components/threads'
 import {ClassTypesStore, ReflectionClassTypesStore} from '../components/types'
 import {Validator} from '../components/validation'
+import {PersistentKVStore} from '../components/persistence/kvstore/PersistentKVStore'
 
 let containerInitialized = false
 
@@ -105,7 +106,7 @@ export function initContainer(): boolean {
 
     // Persistence
 
-    container.set(PersistenceServiceName.KVStore, () => new InMemoryKVStore())
+    container.set(PersistenceServiceName.KVStore, () => new PersistentKVStore(container.get(SerializationServiceName.Encoder)))
 
     // Serialization
 
