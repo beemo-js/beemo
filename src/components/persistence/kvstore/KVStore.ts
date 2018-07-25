@@ -2,9 +2,9 @@
  * Key-Value store.
  */
 export interface KVStore {
-    all<T>(): Promise<T[]>
-    get<T>(key: string): Promise<T>
-    set<T>(key: string, value: T): Promise<boolean>
+    all(): Promise<Object[]>
+    get(key: string): Promise<Object|Object[]>
+    set(key: string, value: Object|Object[]): Promise<boolean>
     has(key: string): Promise<boolean>
     delete(key: string): Promise<boolean>
 }

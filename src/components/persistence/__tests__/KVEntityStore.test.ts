@@ -1,22 +1,28 @@
 import {InMemoryKVStore, Entity, KVEntityStore, KVStore} from '..'
+import {MappedField, Normalizer} from '../../serialization'
+import {container, initContainer, SerializationServiceName} from '../../../framework'
+
+initContainer()
 
 test('KVEntityStore', async () => {
     class User implements Entity<number> {
-        id: number
-        name: string
+        @MappedField() id: number
+        @MappedField() name: string
     }
 
     class UserStore extends KVEntityStore<User, number> {
         constructor(
-            kvStore: KVStore
+            kvStore: KVStore,
+            normalizer: Normalizer
         ) {
-            super(kvStore, 'User')
+            super(kvStore, normalizer, User, 'User')
         }
     }
 
 
     const kvStore = new InMemoryKVStore()
-    const userStore = new UserStore(kvStore)
+    const normalizer = container.get<Normalizer>(SerializationServiceName.Normalizer)
+    const userStore = new UserStore(kvStore, normalizer)
 
     const user = new User()
     user.id = 2
@@ -28,5 +34,5 @@ test('KVEntityStore', async () => {
     expect(foundUser.id).toBe(2)
     expect(foundUser.name).toBe('test-user')
 
-    expect(await userStore.all()).toContain(user)
+    expect(await userStore.all()).toContainEqual(user)
 })
