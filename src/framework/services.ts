@@ -39,18 +39,6 @@ export enum MetadataServiceName {
     ClassMetadataStore = 'metadata/ClassMetadataStore'
 }
 
-export enum MonadsServiceName {
-
-}
-
-export enum PatternsServiceName {
-
-}
-
-export enum PermissionsServiceName {
-    PermissionsRequester = 'permissions/PermissionsRequester'
-}
-
 export enum PersistenceServiceName {
     KVStore = 'persistence/KVStore'
 }
