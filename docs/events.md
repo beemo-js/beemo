@@ -27,3 +27,18 @@ Then dispatch events:
 eventBus.dispatch(new FooEvent('first', 2))
 eventBus.dispatch(new FooEvent('third', 4))
 ```
+
+## Event listener annotations
+
+You can register listeners by using the `@EventListener` annotation on services:
+
+```ts
+@Service()
+class FooListener {
+
+  @EventListener(FooEvent)
+  onFoo(event: FooEvent): void {
+    console.log(event.foo)
+  }
+}
+```
