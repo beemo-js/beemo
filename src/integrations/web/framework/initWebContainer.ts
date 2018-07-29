@@ -8,8 +8,12 @@ import {
     HttpServiceName,
     initContainer,
     LoggingServiceName,
-    ThreadsServiceName
+    ThreadsServiceName,
+    PersistenceServiceName,
+    SerializationServiceName
 } from '../../../framework'
+import {LocalStorageKVStore} from '../components'
+import {InMemoryKVStore} from '../../../components/persistence'
 
 let containerInitialized = false
 
@@ -28,6 +32,14 @@ export function initWebContainer() {
     // Logging
 
     container.set(LoggingServiceName.LogDataFormatter, () => new WebLogDataFormatter())
+
+    // Persistence
+
+    container.set(PersistenceServiceName.KVStore, () => {
+        return !!localStorage ?
+            new LocalStorageKVStore(container.get(SerializationServiceName.Encoder)):
+            new InMemoryKVStore()
+    })
 
     // Threads
 

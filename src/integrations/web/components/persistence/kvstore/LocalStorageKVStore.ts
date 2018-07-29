@@ -1,10 +1,10 @@
-import {KVStore} from './KVStore'
-import {Encoder} from '../../serialization'
+import {KVStore} from '../../../../../components/persistence'
+import {Encoder} from '../../../../../components/serialization'
 
 /**
  * Works only with literal objects
  */
-export class PersistentKVStore implements KVStore {
+export class LocalStorageKVStore implements KVStore {
     constructor(
         private encoder: Encoder
     ) {}
