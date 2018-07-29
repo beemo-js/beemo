@@ -15,12 +15,12 @@ Here are the main features and goals of Beemo:
 - **Helps building apps with a clean architecture**: Beemo makes architectural patterns like Dependency Injection or Event Driven Architecture easier to use
 - **Lightweight**: the full bundle weights ~15kb minimized and gzipped, and this size can be further reduced thanks to the modularity of Beemo's components and tree shaking
 
-Note that this is a work in progress, and absolutely not ready for prod.
+Note that this is a work in progress, and not ready for prod.
 
 ## Install
 
 ```bash
-todo
+npm i beemo-lib
 ```
 
 ## How to use
