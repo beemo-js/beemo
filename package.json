@@ -20,7 +20,8 @@
     "serialization",
     "events"
   ],
-  "main": "index.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/beemo-js/beemo.git"

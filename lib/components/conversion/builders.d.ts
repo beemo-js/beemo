@@ -1,0 +1,15 @@
+import { ConverterData } from './types';
+export declare const defaultTo: (value: any) => ConverterData;
+export declare const round: () => ConverterData;
+export declare const floor: () => ConverterData;
+export declare const ceil: () => ConverterData;
+export declare const lowerCase: () => ConverterData;
+export declare const upperCase: () => ConverterData;
+export declare const trim: () => ConverterData;
+export declare const replace: (pattern: string | RegExp, replacement: string) => ConverterData;
+export declare const encodeUrl: () => ConverterData;
+export declare const encodeUrlComponent: () => ConverterData;
+export declare const decodeUrl: () => ConverterData;
+export declare const decodeUrlComponent: () => ConverterData;
+export declare const sort: (reverse?: boolean) => ConverterData;
+export declare const reverse: () => ConverterData;
