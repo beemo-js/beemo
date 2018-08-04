@@ -1,14 +1,4 @@
-import {Request, Response, ResponseBuilder} from '..'
-
-/**
- * Map of a route to a controller.
- */
-type route  = {
-    // regex to match url
-    pattern: string,
-    // returns response from request
-    controller: (request: Request) => Response
-}
+import {Request, Response, ResponseBuilder, route} from '..'
 
 /**
  * Simple embedded mock server. Requests sent by MockHttpRequestSender are handled by provided controllers.

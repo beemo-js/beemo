@@ -1,9 +1,5 @@
 import {ClassMetadataStore} from '../metadata'
-
-interface AnnotationData {
-    type: Function // Type of annotation
-    data: Object // Annotation data
-}
+import {AnnotationData} from './types'
 
 /**
  * Stores classes annotations (class, constructor, properties, methods and method parameters annotations).

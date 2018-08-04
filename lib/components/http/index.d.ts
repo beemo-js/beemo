@@ -18,3 +18,4 @@ export * from './queue/registerQueue';
 export * from './queue/RequestsQueue';
 export * from './queue/BatchRequestsQueue';
 export * from './server/MockServer';
+export * from './types';

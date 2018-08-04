@@ -1,6 +1,6 @@
 {
   "name": "beemo-lib",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A library to help build clean Typescript & Javascript apps.",
   "keywords": [
     "javascript",
