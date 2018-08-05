@@ -1,5 +1,4 @@
 export * from './formatter/LogDataFormatter';
-export * from '../../integrations/web/components/logging/formatter/WebLogDataFormatter';
 export * from './logger/Logger';
 export * from './logger/BatchLogger';
 export * from './logger/ConsoleLogger';

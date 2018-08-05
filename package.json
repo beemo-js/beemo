@@ -27,7 +27,7 @@
     "url": "https://github.com/beemo-js/beemo.git"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest lib/"
   },
   "author": "Antarès Tupin <antares.tupin@gmail.com>",
   "license": "Apache-2.0",

@@ -13,5 +13,3 @@ export * from "./components/tools/index";
 export * from "./components/types/index";
 export * from "./components/validation/index";
 export * from "./framework/index";
-export * from "./integrations/web/components/index";
-export * from "./integrations/web/framework/index";

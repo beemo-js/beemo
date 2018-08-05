@@ -1,6 +1,13 @@
-import {LoggingBag} from '../LoggingBag'
-import {WebLogDataFormatter} from '../../../integrations/web/components'
-import {BatchLogger} from '..'
+import {BatchLogger, LogDataFormatter, LoggingBag} from '..'
+
+export class WebLogDataFormatter implements LogDataFormatter {
+    format(log: Object): Object {
+        return {
+            date: new Date(),
+            data: log
+        }
+    }
+}
 
 test('Logger', () => {
     const webLogDataFormatter = new WebLogDataFormatter()
