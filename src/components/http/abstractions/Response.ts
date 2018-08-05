@@ -5,7 +5,7 @@ import {ResponseBody} from './ResponseBody'
  */
 export class Response {
     constructor(
-        public status: number,
+        public status: number = 200,
         public body: ResponseBody = new ResponseBody(''),
         public statusMessage: string = '',
         public headers: { [key: string]: string } = {}
@@ -29,7 +29,6 @@ export class Response {
      * - the rest is overridden
      */
     static merge(...responses: Response[]): Response {
-        const result = new Response(null, null)
         return responses.reduce((base, response) => {
             if (!response) return base
 
@@ -39,6 +38,6 @@ export class Response {
             Object.assign(base.headers, response.headers)
 
             return base
-        }, result)
+        }, new Response(null, null))
     }
 }

@@ -35,7 +35,6 @@ export class Call<T> {
     }
 
     static merge<T>(...calls: Call<T>[]): Call<T> {
-        const result = new Call<T>()
         return calls.reduce((base, call) => {
             if (!call) return base
 
@@ -44,7 +43,7 @@ export class Call<T> {
             base.retrieved = call.retrieved || base.retrieved
             base.classFn = call.classFn == Object ? call.classFn: base.classFn
             return base
-        }, result)
+        }, new Call<T>())
     }
 
     static clone<T>(call: Call<T>): Call<T> {
@@ -85,7 +84,7 @@ export class Call<T> {
         if (!this.retrieved) {
             throw 'Value not yet retrieved'
         }
-        return this.value
+        return this.value as T
     }
 
     /**
@@ -94,6 +93,5 @@ export class Call<T> {
     set(value: T): void {
         this.value = value
         this.retrieved = true
-        this.request = null
     }
 }

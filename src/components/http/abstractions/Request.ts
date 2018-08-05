@@ -34,7 +34,6 @@ export class Request {
      * - the rest is overridden
      */
     static merge(...requests: Request[]): Request {
-        const result = new Request()
         return requests.reduce((base, request) => {
             if (!request) return base
 
@@ -46,7 +45,7 @@ export class Request {
             base.body = RequestBody.merge(base.body, request.body)
 
             return base
-        }, result)
+        }, new Request())
     }
 
     /**
