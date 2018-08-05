@@ -9,7 +9,7 @@ export declare class Response {
     headers: {
         [key: string]: string;
     };
-    constructor(status: number, body?: ResponseBody, statusMessage?: string, headers?: {
+    constructor(status?: number, body?: ResponseBody, statusMessage?: string, headers?: {
         [key: string]: string;
     });
     /**
