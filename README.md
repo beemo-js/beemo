@@ -51,7 +51,7 @@ Then you can use Beemo's features, described in the following section by compone
 The following platforms are supported:
 
 - [Web](https://github.com/beemo-js/integration-web)
-- Node (coming soon)
+- [Node](https://github.com/beemo-js/integration-node)
 
 Integrating Beemo to a platform is quite simple, it mainly consists in adding missing implementation of some interfaces for the platform and add them into the global container.
 
