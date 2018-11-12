@@ -1,6 +1,12 @@
-import {InMemoryKVStore, Entity, KVEntityStore, KVStore} from '..'
-import {MappedField, Normalizer} from '../../serialization'
-import {container, initContainer, SerializationServiceName} from '../../../framework'
+import {initContainer} from '../../../framework/initContainer'
+import {Entity} from '../entity/Entity'
+import {MappedField} from '../../serialization/annotations/annotations'
+import {KVEntityStore} from '../entity/KVEntityStore'
+import {KVStore} from '../kvstore/KVStore'
+import {Normalizer} from '../../serialization/Normalizer'
+import {InMemoryKVStore} from '../kvstore/InMemoryKVStore'
+import {container} from '../../../framework/globalContainer'
+import {SerializationServiceName} from '../../../framework/services'
 
 initContainer()
 

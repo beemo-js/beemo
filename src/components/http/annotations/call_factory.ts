@@ -1,6 +1,8 @@
-import {applyMiddleware, ClassAnnotationsStore} from '../../annotations'
-import {container, AnnotationsServiceName, HttpServiceName} from '../../../framework'
-import {CallAnnotationsHandler} from '..'
+import {applyMiddleware} from '../../annotations/aop'
+import {container} from '../../../framework/globalContainer'
+import {CallAnnotationsHandler} from '../factory/call/CallAnnotationsHandler'
+import {AnnotationsServiceName, HttpServiceName} from '../../../framework/services'
+import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
 
 /**
  * Fills the call returned from method with data in parameters.

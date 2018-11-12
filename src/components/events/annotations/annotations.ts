@@ -1,5 +1,6 @@
-import {container, EventsServiceName} from '../../../framework'
 import {EventBus} from '../EventBus'
+import {container} from '../../../framework/globalContainer'
+import {EventsServiceName} from '../../../framework/services'
 
 export function EventListener(eventType: Function): MethodDecorator {
     return (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {

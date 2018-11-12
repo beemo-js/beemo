@@ -1,4 +1,4 @@
-import {aopAnnotation} from '..'
+import {aopAnnotation} from '../aop'
 
 // multiplies the returned value by nb
 function MultiplyResponse(nb: number): MethodDecorator {

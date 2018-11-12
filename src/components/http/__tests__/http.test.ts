@@ -1,25 +1,21 @@
-import {
-    MockHttpRequestSender,
-    Request,
-    BatchRequestsQueue,
-    Body,
-    HandledCall,
-    Header,
-    UrlParam,
-    CallFactory,
-    Call,
-    MockServer,
-    CallHttpClient,
-    ResponseBuilder,
-    RequestBuilder,
-    circuitBreakerInterceptor,
-    HttpClient,
-    retryInterceptor,
-    timeoutInterceptor
-} from '..'
-import {MappedField, JsonEncoder} from '../../serialization'
-import {Entity} from '../../persistence'
-import {initContainer, container, SerializationServiceName} from '../../../framework'
+import {initContainer} from '../../../framework/initContainer'
+import {MockServer} from '../server/MockServer'
+import {ResponseBuilder} from '../abstractions/ResponseBuilder'
+import {MockHttpRequestSender} from '../client/MockHttpRequestSender'
+import {HttpClient} from '../client/HttpClient'
+import {circuitBreakerInterceptor, retryInterceptor, timeoutInterceptor} from '../interceptors/interceptors'
+import {BatchRequestsQueue} from '../queue/BatchRequestsQueue'
+import {CallHttpClient} from '../call/CallHttpClient'
+import {JsonEncoder} from '../../serialization/encoders/JsonEncoder'
+import {container} from '../../../framework/globalContainer'
+import {SerializationServiceName} from '../../../framework/services'
+import {RequestBuilder} from '../abstractions/RequestBuilder'
+import {Entity} from '../../persistence/entity/Entity'
+import {MappedField} from '../../serialization/annotations/annotations'
+import {CallFactory} from '../factory/call/CallFactory'
+import {Call} from '../call/Call'
+import {Body, HandledCall, Header, UrlParam} from '../annotations/call_factory'
+import {Request} from '../abstractions/Request'
 
 initContainer()
 

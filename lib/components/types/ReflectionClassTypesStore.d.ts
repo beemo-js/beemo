@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { ClassTypesStore } from './ClassTypesStore';
 export declare class ReflectionClassTypesStore {
     private classTypesStore;

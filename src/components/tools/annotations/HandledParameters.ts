@@ -1,5 +1,5 @@
-import {ConvertedParameters} from '../../conversion'
-import {ValidatedParameters} from '../../validation'
+import {ValidatedParameters} from '../../validation/annotations/ValidatedParameters'
+import {ConvertedParameters} from '../../conversion/annotations/ConvertedParameters'
 
 /**
  * Handle method parameters converters and validators.

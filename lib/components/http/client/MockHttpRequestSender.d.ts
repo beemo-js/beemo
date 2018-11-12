@@ -1,5 +1,7 @@
-import { Response, Request, MockServer } from '..';
+import { Request } from '../abstractions/Request';
+import { Response } from '../abstractions/Response';
 import { HttpRequestSender } from './HttpRequestSender';
+import { MockServer } from '../server/MockServer';
 /**
  * Mock HTTP client.
  * Requests will go to an embedded mock server.

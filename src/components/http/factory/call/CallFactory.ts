@@ -1,4 +1,5 @@
-import {Call, Request} from '../..'
+import {Request} from '../../abstractions/Request'
+import {Call} from '../../call/Call'
 
 /**
  * Builds Call instances.

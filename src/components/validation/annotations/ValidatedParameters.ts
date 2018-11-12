@@ -1,8 +1,10 @@
-import {applyMiddleware, ClassAnnotationsStore} from '../../annotations'
 import {ValidatorData} from '../types'
-import {container, AnnotationsServiceName, ValidationServiceName} from '../../../framework'
 import {Validator} from '../Validator'
 import {Constraints as ValidatorAnnotation} from './constraints'
+import {container} from '../../../framework/globalContainer'
+import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
+import {AnnotationsServiceName, ValidationServiceName} from '../../../framework/services'
+import {applyMiddleware} from '../../annotations/aop'
 
 /**
  * Validates method parameters.

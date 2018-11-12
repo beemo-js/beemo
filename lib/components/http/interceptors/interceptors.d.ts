@@ -1,4 +1,5 @@
-import { Request, Response } from '..';
+import { Request } from '../abstractions/Request';
+import { Response } from '../abstractions/Response';
 export declare type Interceptor = (next: (req: Request) => Promise<Response>, request: Request) => Promise<Response>;
 /**
  * Retry calling the request nbRetries times if it failed.

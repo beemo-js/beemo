@@ -1,4 +1,4 @@
-import { Call } from '../..';
+import { Call } from '../../call/Call';
 /**
  * Builds Call instances.
  */

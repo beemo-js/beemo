@@ -1,7 +1,9 @@
 import {ClassTypesStore} from '../ClassTypesStore'
 import {ReflectionClassTypesStore} from '../ReflectionClassTypesStore'
-import {container, TypesServiceName, initContainer} from '../../../framework/index'
 import {ReturnType, Type} from '../annotations/annotations'
+import {initContainer} from '../../../framework/initContainer'
+import {container} from '../../../framework/globalContainer'
+import {TypesServiceName} from '../../../framework/services'
 
 initContainer()
 

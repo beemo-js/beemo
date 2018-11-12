@@ -1,7 +1,7 @@
-import { KVStore } from '..';
 import { Entity } from './Entity';
 import { EntityStore } from './EntityStore';
-import { Normalizer } from '../../serialization';
+import { KVStore } from '../kvstore/KVStore';
+import { Normalizer } from '../../serialization/Normalizer';
 /**
  * Enity store implementation using a KV store.
  */

@@ -1,4 +1,4 @@
-import { ClassMetadataStore } from '../metadata';
+import { ClassMetadataStore } from '../metadata/ClassMetadataStore';
 export declare class Normalizer {
     private classMetadataStore;
     static defaultGroup: string;

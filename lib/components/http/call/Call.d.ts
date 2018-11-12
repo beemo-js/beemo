@@ -1,4 +1,4 @@
-import { Request } from '..';
+import { Request } from '../abstractions/Request';
 /**
  * Represents a resource that can be accessed via an HTTP request.
  */

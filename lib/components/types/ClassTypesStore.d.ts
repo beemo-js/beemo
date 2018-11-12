@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { ClassMetadataStore } from '../metadata';
+import { ClassMetadataStore } from '../metadata/ClassMetadataStore';
 export declare class ClassTypesStore {
     private classMetadataStore;
     constructor(classMetadataStore: ClassMetadataStore);

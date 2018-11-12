@@ -1,4 +1,5 @@
-import {Default, Fallback} from '..'
+import {Default} from '../annotations/Default'
+import {Fallback} from '../annotations/Fallback'
 
 // Annotations
 

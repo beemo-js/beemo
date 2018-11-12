@@ -1,4 +1,4 @@
-import { ConverterData } from '..';
+import { ConverterData } from '../types';
 /**
  * Returns a converter annotation.
  */

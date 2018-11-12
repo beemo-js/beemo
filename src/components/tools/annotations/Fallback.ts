@@ -1,4 +1,4 @@
-import {aopAnnotation} from '../../annotations'
+import {aopAnnotation} from '../../annotations/aop'
 
 /**
  * If called method throws an exception, return fallback instead.

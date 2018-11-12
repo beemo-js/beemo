@@ -1,6 +1,8 @@
 import {Call} from './Call'
-import {HttpClient, Response} from '..'
-import {Normalizer, Encoder} from "../../serialization"
+import {Response} from '../abstractions/Response'
+import {HttpClient} from '../client/HttpClient'
+import {Encoder} from '../../serialization/encoders/Encoder'
+import {Normalizer} from '../../serialization/Normalizer'
 
 /**
  * Retrieves the value of Call resources.

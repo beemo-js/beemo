@@ -1,7 +1,4 @@
-import {container, AnnotationsServiceName} from '../../../framework'
-import {ClassAnnotationsStore} from '../../annotations'
 import {
-    ConverterData,
     ceil,
     defaultTo,
     floor,
@@ -16,7 +13,11 @@ import {
     encodeUrlComponent,
     decodeUrlComponent,
     decodeUrl
-} from '..'
+} from '../builders'
+import {ConverterData} from '../types'
+import {container} from '../../../framework/globalContainer'
+import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
+import {AnnotationsServiceName} from '../../../framework/services'
 
 /**
  * Returns a converter annotation.

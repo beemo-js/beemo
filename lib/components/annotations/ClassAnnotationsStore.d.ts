@@ -1,4 +1,4 @@
-import { ClassMetadataStore } from '../metadata';
+import { ClassMetadataStore } from '../metadata/ClassMetadataStore';
 import { AnnotationData } from './types';
 /**
  * Stores classes annotations (class, constructor, properties, methods and method parameters annotations).

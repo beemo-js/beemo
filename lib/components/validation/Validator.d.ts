@@ -1,5 +1,5 @@
 import { ValidatorType, ValidatorData, ValidatorError } from './types';
-import { ClassAnnotationsStore } from '../annotations';
+import { ClassAnnotationsStore } from '../annotations/ClassAnnotationsStore';
 export declare class Validator {
     private classAnnotationsStore;
     /**

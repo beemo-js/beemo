@@ -1,8 +1,10 @@
 import {EventBus} from '../EventBus'
 import {Event} from '../Event'
-import {Service} from '../../di'
-import {container, EventsServiceName, initContainer} from '../../../framework'
-import {EventListener} from '..'
+import {initContainer} from '../../../framework/initContainer'
+import {container} from '../../../framework/globalContainer'
+import {EventsServiceName} from '../../../framework/services'
+import {Service} from '../../di/annotations/annotations'
+import {EventListener} from '../annotations/annotations'
 
 initContainer()
 

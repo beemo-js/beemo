@@ -1,4 +1,4 @@
-import 'reflect-metadata'
+import Reflect from 'reflect-metadata'
 import {ClassTypesStore} from './ClassTypesStore'
 
 // Target can come only from an annotation

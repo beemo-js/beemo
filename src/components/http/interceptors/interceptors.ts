@@ -1,6 +1,8 @@
-import {Request, Response} from '..'
-import {container, HttpServiceName} from '../../../framework'
+import {Request} from '../abstractions/Request'
+import {Response} from '../abstractions/Response'
 import {CircuitBreaker} from './CircuitBreaker'
+import {container} from '../../../framework/globalContainer'
+import {HttpServiceName} from '../../../framework/services'
 
 export type Interceptor = (next: (req: Request) => Promise<Response>, request: Request) => Promise<Response>
 

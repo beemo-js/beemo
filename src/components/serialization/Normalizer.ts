@@ -1,5 +1,5 @@
-import {ClassMetadataStore} from '../metadata'
 import {MappedFieldConfiguration} from './types'
+import {ClassMetadataStore} from '../metadata/ClassMetadataStore'
 
 export class Normalizer {
 

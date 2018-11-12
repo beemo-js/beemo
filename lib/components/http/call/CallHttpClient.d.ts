@@ -1,6 +1,7 @@
 import { Call } from './Call';
-import { HttpClient } from '..';
-import { Normalizer, Encoder } from "../../serialization";
+import { HttpClient } from '../client/HttpClient';
+import { Encoder } from '../../serialization/encoders/Encoder';
+import { Normalizer } from '../../serialization/Normalizer';
 /**
  * Retrieves the value of Call resources.
  */

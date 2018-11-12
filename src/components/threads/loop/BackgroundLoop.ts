@@ -1,4 +1,4 @@
-import {BackgroundTaskManager} from '..'
+ import {BackgroundTaskManager} from '../background/BackgroundTaskManager'
 
 /**
  * Executes a task again and again in background.

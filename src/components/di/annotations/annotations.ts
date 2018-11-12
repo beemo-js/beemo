@@ -1,6 +1,7 @@
 // Register a service to the container
-import {container, DiServiceName} from '../../../framework'
 import {ReflectionServiceManager} from '../ReflectionServiceManager'
+import {container} from '../../../framework/globalContainer'
+import {DiServiceName} from '../../../framework/services'
 
 /**
  * Declares annotated class as a service (i.e. registers it in services container).

@@ -21,9 +21,10 @@ import {
     url,
     valid
 } from '../builders'
-import {container, AnnotationsServiceName, TypesServiceName} from '../../../framework'
-import {ReflectionClassTypesStore} from '../../types'
-import {ClassAnnotationsStore} from '../../annotations'
+import {container} from '../../../framework/globalContainer'
+import {ClassAnnotationsStore} from '../../annotations/ClassAnnotationsStore'
+import {AnnotationsServiceName, TypesServiceName} from '../../../framework/services'
+import {ReflectionClassTypesStore} from '../../types/ReflectionClassTypesStore'
 
 // Annotation to property or method
 function addAnnotation(target: any, key: string, index: number, data: ValidatorData): void {

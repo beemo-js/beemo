@@ -1,4 +1,7 @@
-import {Request, Response, ResponseBuilder, route} from '..'
+import {Request} from '../abstractions/Request'
+import {Response} from '../abstractions/Response'
+import {route} from '../types'
+import {ResponseBuilder} from '../abstractions/ResponseBuilder'
 
 /**
  * Simple embedded mock server. Requests sent by MockHttpRequestSender are handled by provided controllers.

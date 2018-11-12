@@ -1,7 +1,7 @@
 import { Container } from './Container';
-import { ClassAnnotationsStore } from '../annotations';
-import { ReflectionClassTypesStore } from '../types';
-import { ConfigurationStore } from '../config';
+import { ReflectionClassTypesStore } from '../types/ReflectionClassTypesStore';
+import { ClassAnnotationsStore } from '../annotations/ClassAnnotationsStore';
+import { ConfigurationStore } from '../config/ConfigurationStore';
 /**
  * Handles services registration using its constructor parameters' reflected types.
  */

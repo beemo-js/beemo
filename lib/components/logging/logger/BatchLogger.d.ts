@@ -1,5 +1,6 @@
 import { Logger } from './Logger';
-import { LoggingBag, LogDataFormatter } from '..';
+import { LogDataFormatter } from '../formatter/LogDataFormatter';
+import { LoggingBag } from '../LoggingBag';
 /**
  * Store logs in a logging bag.
  * They will then be handled by a worker.

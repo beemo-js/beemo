@@ -1,4 +1,4 @@
-import { ConfigurationStore } from '.';
+import { ConfigurationStore } from './ConfigurationStore';
 /**
  * In-memory configuration store.
  */

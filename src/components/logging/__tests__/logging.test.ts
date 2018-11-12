@@ -1,4 +1,6 @@
-import {BatchLogger, LogDataFormatter, LoggingBag} from '..'
+import {LogDataFormatter} from '../formatter/LogDataFormatter'
+import {LoggingBag} from '../LoggingBag'
+import {BatchLogger} from '../logger/BatchLogger'
 
 export class WebLogDataFormatter implements LogDataFormatter {
     format(log: Object): Object {

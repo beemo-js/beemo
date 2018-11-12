@@ -1,10 +1,14 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "lib": ["es7", "dom", "scripthost", "esnext", "es2015"],
+        "target": "es6",
+        "lib": ["es7", "dom", "scripthost", "esnext"],
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "alwaysStrict": true,
-        "outDir": "lib"
+        "outDir": "lib",
+        "baseUrl": ".",
+        "paths": {
+            "reflect-metadata": ["node_modules/reflect-metadata/Reflect.js"]
+        }
     }
 }

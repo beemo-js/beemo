@@ -1,6 +1,6 @@
-import { ClassAnnotationsStore } from '../../../annotations';
-import { Call } from '../..';
-import { Normalizer } from '../../../serialization';
+import { ClassAnnotationsStore } from '../../../annotations/ClassAnnotationsStore';
+import { Normalizer } from '../../../serialization/Normalizer';
+import { Call } from '../../call/Call';
 /**
  * Fills the call returned from method in call factory with data in parameters.
  */

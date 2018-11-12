@@ -1,5 +1,5 @@
 import {Logger} from './Logger'
-import {LogDataFormatter} from '..'
+import {LogDataFormatter} from '../formatter/LogDataFormatter'
 
 /**
  * Logs logs in console.

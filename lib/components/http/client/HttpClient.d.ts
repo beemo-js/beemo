@@ -1,5 +1,7 @@
-import { Request, Response, Interceptor } from '..';
+import { Request } from '../abstractions/Request';
+import { Response } from '../abstractions/Response';
 import { HttpRequestSender } from './HttpRequestSender';
+import { Interceptor } from '../interceptors/interceptors';
 export declare class HttpClient {
     private requestSender;
     /**
